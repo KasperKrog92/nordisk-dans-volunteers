@@ -1342,6 +1342,7 @@
   }
 
   function updatePasswordStrength(pw, prefix = '') {
+    if (!prefix && !isSignUp) return
     const level = passwordStrength(pw)
     const colors = ['#e8e0d8', '#e05c3a', '#e0a040', '#C4991A']
     const hasLetters = /[A-Za-z]/.test(pw)
