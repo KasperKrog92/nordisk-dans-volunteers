@@ -1,6 +1,6 @@
-// Shared branded email templates for Turkis volunteer platform.
+// Shared branded email templates for Nordisk Dans volunteer platform.
 
-const APP_URL = "https://gamestormers.dk/turkis-volunteers.html";
+const APP_URL = "https://kasperkrog92.github.io/nordisk-dans-volunteers/";
 
 export function emailLayout(bodyContent: string): string {
   return `<!DOCTYPE html>
@@ -17,9 +17,9 @@ export function emailLayout(bodyContent: string): string {
 
           <!-- Header -->
           <tr>
-            <td style="background:#459A98;padding:28px 36px;">
-              <p style="margin:0;font-size:20px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#ffffff;line-height:1;">TURKIS</p>
-              <p style="margin:5px 0 0;font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.6);line-height:1;">Volunteer Platform</p>
+            <td style="background:#1a1917;padding:28px 36px;">
+              <p style="margin:0;font-size:20px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#ffffff;line-height:1;">NORDISK DANS</p>
+              <p style="margin:5px 0 0;font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1;">Volunteer Platform</p>
             </td>
           </tr>
 
@@ -34,8 +34,8 @@ export function emailLayout(bodyContent: string): string {
           <tr>
             <td style="background:#fafaf8;border-top:1px solid #e8e0d8;padding:20px 36px;">
               <p style="margin:0;font-size:11px;color:#bbb;line-height:1.7;letter-spacing:0.02em;">
-                Turkis · Vester Allé 15, 8000 Aarhus C<br>
-                <a href="mailto:volunteers@gamestormers.dk" style="color:#bbb;text-decoration:none;">volunteers@gamestormers.dk</a>
+                Nordisk Dans<br>
+                <a href="mailto:kkandersen01@gmail.com" style="color:#bbb;text-decoration:none;">kkandersen01@gmail.com</a>
               </p>
             </td>
           </tr>
@@ -70,13 +70,13 @@ export function infoTable(rows: Array<[string, string]>): string {
 }
 
 export function callout(content: string): string {
-  return `<div style="background:#f5f3f0;border-left:3px solid #459A98;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.65;">${content}</div>`;
+  return `<div style="background:#f5f3f0;border-left:3px solid #C4991A;padding:14px 18px;margin:20px 0;font-size:14px;color:#444;line-height:1.65;">${content}</div>`;
 }
 
 export function button(text: string, href = APP_URL): string {
   return `<table cellpadding="0" cellspacing="0" role="presentation" style="margin:28px 0 4px;">
     <tr>
-      <td style="background:#459A98;">
+      <td style="background:#C4991A;">
         <a href="${href}" style="display:inline-block;padding:13px 26px;font-size:11px;font-weight:600;letter-spacing:0.14em;text-transform:uppercase;color:#ffffff;text-decoration:none;">${text}</a>
       </td>
     </tr>

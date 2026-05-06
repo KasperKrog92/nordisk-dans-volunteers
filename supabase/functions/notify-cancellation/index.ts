@@ -5,7 +5,7 @@ import { emailLayout, heading, p, infoTable, button } from "../_shared/email.ts"
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const FROM_EMAIL = "volunteers@gamestormers.dk";
+const FROM_EMAIL = "kkandersen01@gmail.com";
 const MIN_SIGNUP_AGE_MINUTES = 10;
 
 Deno.serve(async (req) => {
@@ -51,8 +51,8 @@ Deno.serve(async (req) => {
       ? new Date(shift.start_time).toLocaleString("da-DK", { timeZone: "Europe/Copenhagen" })
       : "—";
     const adminEventUrl = eventId
-      ? `https://gamestormers.dk/turkis-volunteers.html#admin-event/${eventId}`
-      : `https://gamestormers.dk/turkis-volunteers.html`;
+      ? `https://kasperkrog92.github.io/nordisk-dans-volunteers/#admin-event/${eventId}`
+      : `https://kasperkrog92.github.io/nordisk-dans-volunteers/`;
 
     const html = emailLayout(
       heading("Shift cancellation") +

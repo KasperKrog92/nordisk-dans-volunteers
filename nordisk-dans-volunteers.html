@@ -533,13 +533,6 @@
     #detail-date, #detail-location { color: #aaa; margin-bottom: 0; }
     #detail-location { font-size: 0.88rem; }
     #detail-description { margin-bottom: 0; line-height: 1.6; }
-    #btn-add-to-calendar {
-      background: none; border: none; border-bottom: 1px solid #C4991A; padding: 0; margin: 0;
-      width: auto; color: #C4991A; font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-      white-space: nowrap; flex-shrink: 0; margin-bottom: 0;
-    }
-    #btn-add-to-calendar:hover { background: none; color: #9a7500; border-bottom-color: #9a7500; }
     #admin-detail-title { text-transform: none; }
     #admin-detail-date { color: #555; font-size: 0.85rem; letter-spacing: 0.05em; margin-bottom: 1.5rem; }
     #chat-not-signed-up { font-size: 0.85rem; color: #aaa; margin-bottom: 1rem; }
@@ -557,13 +550,6 @@
     .detail-back-row { display: flex; gap: 0.6rem; margin-bottom: 1rem; }
     .detail-date-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; margin-bottom: 0.3rem; }
     .detail-location-row { display: flex; align-items: center; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 0.85rem; }
-    #btn-add-to-calendar {
-      background: none; border: none; padding: 0; margin: 0; margin-bottom: 0;
-      width: auto; color: #C4991A; font-size: 0.75rem; font-weight: 500;
-      letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer;
-      white-space: nowrap; flex-shrink: 0;
-    }
-    #btn-add-to-calendar:hover { background: none; color: #9a7500; }
     #auth-forgot-desc { font-size: 0.85rem; color: #555; font-weight: 300; margin-bottom: 1rem; }
     #auth-forgot-back { margin-top: 0.8rem; font-size: 0.82rem; }
     #auth-forgot-back a { color: #888; text-decoration: underline; }
@@ -832,21 +818,6 @@
         <a href="#" onclick="goBackToStep1(); return false;" class="back-link">← Back</a>
       </p>
       <div class="form-group">
-        <label>Which roles are you interested in?</label>
-        <div style="margin-top:0.6rem; display:flex; flex-direction:column; gap:0.5rem;">
-          <label class="check-label">
-            <input type="checkbox" name="signup-tag" value="bar_wardrobe_entrance" /> Bar / Entrance / Wardrobe
-          </label>
-          <label class="check-label">
-            <input type="checkbox" name="signup-tag" value="backstage_manager" /> Backstage Manager
-          </label>
-          <label class="check-label">
-            <input type="checkbox" name="signup-tag" value="light_operator" /> Light / Visuals
-          </label>
-        </div>
-        <p class="role-hint">Beyond these core roles, volunteers sometimes help out with photography, interior decoration, and other tasks — feel free to mention this in your motivation below.</p>
-      </div>
-      <div class="form-group">
         <label>Motivation &amp; experience (optional)</label>
         <textarea id="application-motivation" rows="4" placeholder="Tell us a bit about yourself, any relevant experience, and what draws you to Nordisk Dans..."></textarea>
       </div>
@@ -917,7 +888,6 @@
         <h2 id="detail-title"></h2>
         <div class="detail-date-row">
           <p id="detail-date"></p>
-          <button id="btn-add-to-calendar" class="hidden">+ Calendar</button>
         </div>
         <div class="detail-location-row">
           <p id="detail-location"></p>
@@ -984,11 +954,6 @@
             <label>Full name</label>
             <input type="text" id="profile-name" maxlength="80" style="margin-bottom:0;" />
           </div>
-        </div>
-
-        <div class="form-group">
-          <label>Your roles at Nordisk Dans</label>
-          <div id="profile-tags" style="margin-top:0.6rem; display:flex; flex-direction:column; gap:0.5rem;"></div>
         </div>
 
         <div style="display:flex; gap:0.8rem; flex-wrap:wrap;">
@@ -1147,15 +1112,6 @@
         <div id="vol-broadcast-panel" class="hidden">
           <div class="card-box">
             <h3>Email volunteers</h3>
-            <div style="margin-bottom:0.8rem;">
-              <label class="vol-broadcast-label">Send to (leave all unchecked to send to everyone)</label>
-              <div style="display:flex; flex-wrap:wrap; gap:0.6rem 1.2rem;">
-                <label class="check-label"><input type="checkbox" class="vol-broadcast-tag" value="bar_wardrobe_entrance" /> Bar / Entrance / Wardrobe</label>
-                <label class="check-label"><input type="checkbox" class="vol-broadcast-tag" value="backstage_manager" /> Backstage Manager</label>
-                <label class="check-label"><input type="checkbox" class="vol-broadcast-tag" value="light_operator" /> Light / Visuals</label>
-                <label class="check-label"><input type="checkbox" class="vol-broadcast-tag" value="bar_manager" /> Bar Manager</label>
-              </div>
-            </div>
             <input type="text" id="vol-broadcast-subject" placeholder="Subject" style="margin-bottom:0.6rem;" />
             <textarea id="vol-broadcast-message" rows="4" placeholder="Message"></textarea>
             <button onclick="sendVolunteerBroadcast()">Send email</button>
@@ -1166,11 +1122,6 @@
         <div style="margin-top:0.5rem; margin-bottom:0.5rem;">
           <input type="text" id="vol-search" placeholder="Search by name..." oninput="filterVolunteers()" style="margin-bottom:0.6rem;" />
           <div class="vol-filter-wrap">
-            <span class="vol-filter-label vol-filter-label-text">Filter:</span>
-            <label class="check-label"><input type="checkbox" class="vol-filter-tag" value="bar_wardrobe_entrance" onchange="filterVolunteers()" /> Bar / Entrance / Wardrobe</label>
-            <label class="check-label"><input type="checkbox" class="vol-filter-tag" value="backstage_manager" onchange="filterVolunteers()" /> Backstage Manager</label>
-            <label class="check-label"><input type="checkbox" class="vol-filter-tag" value="light_operator" onchange="filterVolunteers()" /> Light / Visuals</label>
-            <label class="check-label"><input type="checkbox" class="vol-filter-tag" value="bar_manager" onchange="filterVolunteers()" /> Bar Manager</label>
             <label class="check-label" style="color:#bbb;"><input type="checkbox" id="vol-filter-below-target" onchange="filterVolunteers()" /> Below target</label>
           </div>
         </div>
@@ -1261,16 +1212,6 @@
       <!-- Add shift -->
       <button class="secondary btn-auto" onclick="toggleNewShiftForm()" id="toggle-new-shift-btn">+ Add shift</button>
       <div id="new-shift-form" class="card-box hidden" style="margin-top:0.75rem;">
-        <div style="margin-bottom:1rem;">
-          <div class="template-label">Quick templates</div>
-          <div class="template-row">
-            <button class="secondary btn-template" onclick="applyShiftTemplate('bar')">Bar / Entrance / Wardrobe</button>
-            <button class="secondary btn-template" onclick="applyShiftTemplate('backstage')">Backstage Manager</button>
-            <button class="secondary btn-template" onclick="applyShiftTemplate('light')">Light / Visuals</button>
-            <button class="secondary btn-template" onclick="applyShiftTemplate('barmanager')">Bar Manager</button>
-          </div>
-          <div id="shift-template-warning">Event times not set — time fields left empty.</div>
-        </div>
         <div class="form-group">
           <label>Role name</label>
           <input type="text" id="admin-shift-role" placeholder="e.g. Bar volunteer" />
@@ -1290,16 +1231,6 @@
         <div class="form-group">
           <label>End time (optional)</label>
           <input type="datetime-local" id="admin-shift-end" />
-        </div>
-        <div class="form-group">
-          <label>Who can sign up</label>
-          <select id="admin-shift-tag">
-            <option value="">Everyone</option>
-            <option value="bar_wardrobe_entrance">Bar / Entrance / Wardrobe</option>
-            <option value="backstage_manager">Backstage Manager</option>
-            <option value="light_operator">Light / Visuals</option>
-            <option value="bar_manager">Bar Manager</option>
-          </select>
         </div>
         <div class="form-group">
           <label>Lock cancellations after (optional)</label>
@@ -1344,25 +1275,6 @@
   const SUPABASE_URL = 'https://nmhmuaggsnsgswvfjaxh.supabase.co'
   const SUPABASE_KEY = 'sb_publishable_BJRJLMyp-D4T-Vj9sAu-Cw_JuYD_x86'
   // ────────────────────────────────────────────────────────
-
-  const TAGS = {
-    bar_wardrobe_entrance: 'Bar / Entrance / Wardrobe',
-    backstage_manager: 'Backstage Manager',
-    light_operator: 'Light / Visuals',
-    bar_manager: 'Bar Manager'
-  }
-  const SELF_ASSIGNABLE_TAGS = ['bar_wardrobe_entrance', 'backstage_manager', 'light_operator']
-
-  function tagSelectOptions(selected = '') {
-    return `<option value="">Everyone</option>` +
-      Object.entries(TAGS).map(([k, v]) =>
-        `<option value="${k}" ${selected === k ? 'selected' : ''}>${v}</option>`
-      ).join('')
-  }
-
-  function tagBadge(tagKey) {
-    return `<span class="tag-badge">${TAGS[tagKey] || tagKey}</span>`
-  }
 
   let currentUser = null
   let currentUserProfile = null
@@ -1544,12 +1456,10 @@
     const fullName = toTitleCase(document.getElementById('input-name').value.trim())
     setStatus('')
 
-    const selectedTags = [...document.querySelectorAll('input[name="signup-tag"]:checked')].map(el => el.value)
     const motivation = document.getElementById('application-motivation').value.trim()
 
     // Build application_note
     const noteLines = []
-    if (selectedTags.length) noteLines.push(`Interests: ${selectedTags.map(t => TAGS[t] || t).join(', ')}`)
     if (motivation) noteLines.push(`Motivation: ${motivation}`)
     noteLines.push('Shift commitment: Acknowledged')
     const applicationNote = noteLines.join('\n')
@@ -1562,8 +1472,6 @@
     })
     if (error) return setStatus(error.message)
 
-    // Store tags to apply after email confirmation + login
-    if (selectedTags.length) localStorage.setItem('pendingTags', JSON.stringify(selectedTags))
     localStorage.setItem('pendingApplicationNote', applicationNote)
 
     setStatus('Check your email to confirm your account, then log in.')
@@ -1800,15 +1708,6 @@
       : `<img class="event-img-header event-img-header--default" src="img/nordisk_dans_logo_transparent.png" alt="Nordisk Dans" />`
     document.getElementById('btn-edit-event').classList.toggle('hidden', !currentUserProfile?.is_admin)
     const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Copenhagen' })
-    const calBtnEl = document.getElementById('btn-add-to-calendar')
-    if (e.date >= today) {
-      calBtnEl.classList.remove('hidden')
-      const startTime = e.start_time ? e.date + 'T' + e.start_time : null
-      const endTime = e.end_time ? (e.end_date || e.date) + 'T' + e.end_time : null
-      calBtnEl.onclick = () => downloadICS({ title: e.title, date: e.date, startTime, endTime, location: e.location || '', eventDescription: e.description || null })
-    } else {
-      calBtnEl.classList.add('hidden')
-    }
     document.title = e.title
     // Reset shifts section to collapsed
     document.getElementById('shifts-body').style.display = 'none'
@@ -1823,14 +1722,9 @@
     document.getElementById('shifts-list').innerHTML = '<p class="muted-empty">Loading...</p>'
     const { data: shifts } = await db.from('shifts').select('*').eq('event_id', eventId)
     const shiftIds = (shifts || []).map(s => s.id)
-    // Fetch signups (filtered to this event's shifts) and user tags in parallel
-    const [{ data: eventSignups }, { data: myTagsData }] = await Promise.all([
-      shiftIds.length
-        ? db.from('signups').select('shift_id, user_id, profiles(id, full_name, avatar_url, instagram, facebook, bio)').in('shift_id', shiftIds)
-        : Promise.resolve({ data: [] }),
-      db.from('volunteer_tags').select('tag').eq('user_id', currentUser.id)
-    ])
-    const myTags = (myTagsData || []).map(t => t.tag)
+    const { data: eventSignups } = shiftIds.length
+      ? await db.from('signups').select('shift_id, user_id, profiles(id, full_name, avatar_url, instagram, facebook, bio)').in('shift_id', shiftIds)
+      : { data: [] }
     const myShiftIds = (eventSignups || []).filter(s => s.user_id === currentUser.id).map(s => s.shift_id)
     const countMap = {}
     ;(eventSignups || []).forEach(s => { countMap[s.shift_id] = (countMap[s.shift_id] || 0) + 1 })
@@ -1847,7 +1741,6 @@
       const count = countMap[s.id] || 0
       const isMine = myShiftIds.includes(s.id)
       const full = count >= s.capacity && !isMine
-      const hasTag = !s.required_tag || myTags.includes(s.required_tag)
       const time = s.start_time ? `${formatTime(s.start_time)} – ${formatTime(s.end_time)}` : ''
       const shiftProfiles = (eventSignups || [])
         .filter(sp => sp.shift_id === s.id && sp.profiles?.full_name)
@@ -1864,15 +1757,13 @@
           : `<button class="secondary" onclick="cancelSignup('${s.id}')" style="width:auto; padding:0.3rem 0.9rem; margin-bottom:0; font-size:0.78rem;">Cancel signup</button>`
         : full
         ? `<button disabled style="width:auto; padding:0.3rem 0.9rem; margin-bottom:0; font-size:0.78rem;">Full</button>`
-        : !hasTag
-        ? `<span class="tag-required">Requires: ${TAGS[s.required_tag]}</span>`
         : `<button onclick="signUpForShift('${s.id}')" style="width:auto; padding:0.3rem 0.9rem; margin-bottom:0; font-size:0.78rem;">Sign up</button>`
       return `
         <div class="card" style="border-left: 3px solid #C4991A; padding-left: 0.8rem;">
           <div class="shift-card-layout">
             <div class="shift-card-content">
               <div class="shift-role-name">
-                ${esc(s.role_name)}${s.required_tag ? `<span class="tag-badge-inline">${TAGS[s.required_tag]}</span>` : ''}
+                ${esc(s.role_name)}
               </div>
               ${time ? `<p style="color:#888; font-size:0.8rem; margin-top:0.2rem; letter-spacing:0.02em;">${time}</p>` : ''}
               ${s.description ? `<p style="color:#555; font-size:0.85rem; margin-top:0.3rem; font-style:italic;">${esc(s.description)}</p>` : ''}
@@ -1988,7 +1879,6 @@
                     <span class="tag date-tag">${formatDate(event.date)}</span>
                     <div class="card-title">${esc(event.title)}</div>
                     <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
-                    ${currentShiftsTab === 'upcoming' ? calBtn({ title: event.title, date: event.date, startTime: shift.start_time || null, endTime: shift.end_time || null, location: event.location || '', role: shift.role_name, shiftDescription: shift.description || null, eventDescription: event.description || null }) : ''}
                   </div>
                 </div>
               </a>
@@ -2502,11 +2392,10 @@
     const capacity = parseInt(document.getElementById('admin-shift-capacity').value)
     const start_time = document.getElementById('admin-shift-start').value || null
     const end_time = document.getElementById('admin-shift-end').value || null
-    const required_tag = document.getElementById('admin-shift-tag').value || null
     const lock_date = document.getElementById('admin-shift-lock-date').value || null
     if (!role_name) return setStatus('Role name is required.')
     const { error } = await db.from('shifts').insert({
-      event_id: currentAdminEvent.id, role_name, description, capacity, start_time, end_time, required_tag, lock_date
+      event_id: currentAdminEvent.id, role_name, description, capacity, start_time, end_time, lock_date
     })
     if (error) return setStatus(error.message)
     document.getElementById('admin-shift-role').value = ''
@@ -2555,7 +2444,7 @@
         <div class="shift-admin-card">
           <div class="shift-admin-header">
             <div>
-              <div class="shift-role-name">${esc(s.role_name)}${time ? `<span style="color:#888; font-size:0.8rem; font-weight:400; letter-spacing:0.04em; text-transform:none; margin-left:0.6rem;">${time}</span>` : ''}${s.required_tag ? `<span class="tag-badge-inline">${TAGS[s.required_tag]}</span>` : ''}</div>
+              <div class="shift-role-name">${esc(s.role_name)}${time ? `<span style="color:#888; font-size:0.8rem; font-weight:400; letter-spacing:0.04em; text-transform:none; margin-left:0.6rem;">${time}</span>` : ''}</div>
               ${s.description ? `<p style="color:#888; font-size:0.82rem; margin-top:0.2rem; font-style:italic;">${esc(s.description)}</p>` : ''}
               <p style="color:#666; font-size:0.8rem; margin-top:0.3rem;">${signups.length} / ${s.capacity} signed up</p>
             </div>
@@ -2603,12 +2492,6 @@
               <input type="datetime-local" id="edit-shift-end-${s.id}" value="${s.end_time ? new Date(s.end_time).toISOString().slice(0,16) : ''}" />
             </div>
             <div class="form-group">
-              <label>Who can sign up</label>
-              <select id="edit-shift-tag-${s.id}">
-                ${tagSelectOptions(s.required_tag || '')}
-              </select>
-            </div>
-            <div class="form-group">
               <label>Lock cancellations after (optional)</label>
               <input type="date" id="edit-shift-lock-date-${s.id}" value="${s.lock_date || ''}" onfocus="autoFillLockDate(this)" />
               <small style="color:#888; font-size:0.78rem;">Volunteers cannot cancel their signup after this date</small>
@@ -2644,10 +2527,9 @@
     const capacity = parseInt(document.getElementById(`edit-shift-capacity-${id}`).value)
     const start_time = document.getElementById(`edit-shift-start-${id}`).value || null
     const end_time = document.getElementById(`edit-shift-end-${id}`).value || null
-    const required_tag = document.getElementById(`edit-shift-tag-${id}`).value || null
     const lock_date = document.getElementById(`edit-shift-lock-date-${id}`).value || null
     if (!role_name) return setStatus('Role name is required.')
-    const { error } = await db.from('shifts').update({ role_name, description, capacity, start_time, end_time, required_tag, lock_date }).eq('id', id)
+    const { error } = await db.from('shifts').update({ role_name, description, capacity, start_time, end_time, lock_date }).eq('id', id)
     if (error) return setStatus(error.message)
     setStatus('Shift updated!')
     await loadAdminShifts(currentAdminEvent.id)
@@ -3285,67 +3167,6 @@
     return new Date(ts).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', timeZone: 'UTC' })
   }
 
-  function toICSDateTimeUTC(isoStr) {
-    return new Date(isoStr).toISOString().replace(/[-:]/g, '').replace(/\.\d+Z$/, 'Z')
-  }
-
-  // Produces floating/local ICS time (no Z) so calendar apps don't shift the time.
-  // - Strings with an explicit timezone (Z or ±HH:MM) → extract UTC wall-clock as floating
-  // - Strings without timezone (bare "YYYY-MM-DDTHH:MM:SS") → format directly, no Date parsing
-  function toICSDateTimeFloat(isoStr) {
-    if (/Z|[+-]\d{2}:?\d{2}$/.test(isoStr)) {
-      const d = new Date(isoStr)
-      const pad = n => String(n).padStart(2, '0')
-      return String(d.getUTCFullYear()) + pad(d.getUTCMonth() + 1) + pad(d.getUTCDate()) +
-             'T' + pad(d.getUTCHours()) + pad(d.getUTCMinutes()) + pad(d.getUTCSeconds())
-    }
-    return isoStr.replace(/[-:]/g, '').replace(/\.\d+$/, '').slice(0, 15)
-  }
-
-  function downloadICS(calData) {
-    const icsEscape = s => String(s).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\n/g, '\\n')
-    const rawTitle = calData.role ? calData.role + ' – ' + calData.title : calData.title
-    const loc = calData.location || 'Vester Allé 15, 8000 Aarhus C'
-    const descParts = []
-    if (calData.shiftDescription) descParts.push(calData.shiftDescription)
-    if (calData.eventDescription) descParts.push(calData.eventDescription)
-    if (calData.role) descParts.push(calData.role)
-    descParts.push('Nordisk Dans volunteer shift')
-    const description = descParts.join('\n\n')
-    let dtstart, dtend
-    if (calData.startTime) {
-      dtstart = 'DTSTART:' + toICSDateTimeFloat(calData.startTime)
-      dtend = 'DTEND:' + toICSDateTimeFloat(calData.endTime || calData.startTime)
-    } else {
-      const [y, m, d] = calData.date.split('-').map(Number)
-      const next = new Date(y, m - 1, d + 1)
-      const pad = n => String(n).padStart(2, '0')
-      dtstart = 'DTSTART;VALUE=DATE:' + calData.date.replace(/-/g, '')
-      dtend = 'DTEND;VALUE=DATE:' + next.getFullYear() + pad(next.getMonth() + 1) + pad(next.getDate())
-    }
-    const uid = Date.now() + '-' + Math.random().toString(36).slice(2) + '@nordisk-dans'
-    const dtstamp = 'DTSTAMP:' + toICSDateTimeUTC(new Date().toISOString())
-    const ics = [
-      'BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Nordisk Dans Volunteers//EN',
-      'CALSCALE:GREGORIAN', 'METHOD:PUBLISH',
-      'BEGIN:VEVENT', 'UID:' + uid, dtstamp, dtstart, dtend,
-      'SUMMARY:' + icsEscape(rawTitle),
-      'DESCRIPTION:' + icsEscape(description),
-      'LOCATION:' + icsEscape(loc),
-      'END:VEVENT', 'END:VCALENDAR'
-    ].join('\r\n')
-    const blob = new Blob([ics], { type: 'text/calendar;charset=utf-8' })
-    const a = document.createElement('a')
-    a.href = URL.createObjectURL(blob)
-    a.download = rawTitle.replace(/[^a-z0-9]/gi, '-').replace(/-+/g, '-').toLowerCase() + '.ics'
-    document.body.appendChild(a); a.click(); document.body.removeChild(a)
-    URL.revokeObjectURL(a.href)
-  }
-
-  function calBtn(calData) {
-    const encoded = encodeURIComponent(JSON.stringify(calData))
-    return `<button class="secondary" style="width:auto;padding:0.3rem 0.8rem;margin-bottom:0;font-size:0.75rem;margin-top:0.6rem;" onclick="event.stopPropagation();downloadICS(JSON.parse(decodeURIComponent('${encoded}')))">+ Add to calendar</button>`
-  }
   // Stop chat polling when tab is hidden, restart when visible
   document.addEventListener('visibilitychange', () => {
     if (document.hidden) {
@@ -3549,12 +3370,6 @@ db.auth.onAuthStateChange((event, session) => {
           document.getElementById('section-app').classList.remove('hidden')
           document.getElementById('logo-header').style.cursor = 'pointer'
           if (profile.is_admin) document.getElementById('nav-admin').classList.remove('hidden')
-          const pendingTags = JSON.parse(localStorage.getItem('pendingTags') || 'null')
-          if (pendingTags && pendingTags.length) {
-            const inserts = pendingTags.map(tag => ({ user_id: session.user.id, tag }))
-            await db.from('volunteer_tags').upsert(inserts, { onConflict: 'user_id,tag' })
-            localStorage.removeItem('pendingTags')
-          }
           const pendingNote = localStorage.getItem('pendingApplicationNote')
           if (pendingNote) {
             await db.from('profiles').update({ application_note: pendingNote }).eq('id', session.user.id)

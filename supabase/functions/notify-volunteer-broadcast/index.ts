@@ -6,7 +6,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const FROM_EMAIL = "volunteers@gamestormers.dk";
+const FROM_EMAIL = "kkandersen01@gmail.com";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -48,14 +48,14 @@ Deno.serve(async (req) => {
       );
     }
 
-    const fromLabel = sender_name || "The Turkis team";
+    const fromLabel = sender_name || "The Nordisk Dans team";
 
     const html = emailLayout(
       heading(subject) +
       p(`A message from <strong>${fromLabel}</strong>:`) +
       callout(message.replace(/\n/g, "<br>")) +
       button("Open volunteer platform") +
-      p("This message was sent to Turkis volunteers.", true)
+      p("This message was sent to Nordisk Dans volunteers.", true)
     );
 
     await Promise.allSettled(

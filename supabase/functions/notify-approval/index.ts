@@ -6,7 +6,7 @@ const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_ANON_KEY = Deno.env.get("SUPABASE_ANON_KEY")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const FROM_EMAIL = "volunteers@gamestormers.dk";
+const FROM_EMAIL = "kkandersen01@gmail.com";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -47,10 +47,10 @@ Deno.serve(async (req) => {
     const html = emailLayout(
       heading("Welcome to the team!") +
       p(`Hi ${firstName},`) +
-      p("Great news — your application to volunteer at <strong>Turkis</strong> has been approved. We're really happy to have you with us.") +
-      p("You can now log in, browse upcoming events and sign up for shifts. We aim for around two shifts per month, but we'd rather have you when you can than not at all.") +
+      p("Great news — your application to volunteer at <strong>Nordisk Dans</strong> has been approved. We're really happy to have you with us.") +
+      p("You can now log in, browse upcoming events and sign up for shifts.") +
       button("Open the volunteer platform") +
-      p("See you at the venue,<br><strong>The Turkis team</strong>", true)
+      p("See you on the dance floor,<br><strong>The Nordisk Dans team</strong>", true)
     );
 
     await fetch("https://api.resend.com/emails", {
@@ -59,7 +59,7 @@ Deno.serve(async (req) => {
       body: JSON.stringify({
         from: FROM_EMAIL,
         to: email,
-        subject: "You're in — welcome to Turkis!",
+        subject: "You're in — welcome to Nordisk Dans!",
         html,
       }),
     });

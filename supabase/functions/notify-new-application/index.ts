@@ -5,7 +5,7 @@ import { emailLayout, heading, p, infoTable, button } from "../_shared/email.ts"
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY")!;
 const SUPABASE_URL = Deno.env.get("SUPABASE_URL")!;
 const SUPABASE_SERVICE_ROLE_KEY = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
-const FROM_EMAIL = "volunteers@gamestormers.dk";
+const FROM_EMAIL = "kkandersen01@gmail.com";
 
 Deno.serve(async (req) => {
   try {
@@ -39,12 +39,12 @@ Deno.serve(async (req) => {
     const html = isPending
       ? emailLayout(
           heading("New volunteer application") +
-          p("Someone has applied to join the Turkis volunteer team and is waiting for your review.") +
+          p("Someone has applied to join the Nordisk Dans volunteer team and is waiting for your review.") +
           infoTable([
             ["Name", applicantName],
             ["Email", profile.email || "—"],
           ]) +
-          button("Review in admin panel", "https://gamestormers.dk/turkis-volunteers.html#admin")
+          button("Review in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/#admin")
         )
       : emailLayout(
           heading("New volunteer signed up") +
@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
             ["Name", applicantName],
             ["Email", profile.email || "—"],
           ]) +
-          button("View in admin panel", "https://gamestormers.dk/turkis-volunteers.html#admin")
+          button("View in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/#admin")
         );
 
     await Promise.allSettled(
