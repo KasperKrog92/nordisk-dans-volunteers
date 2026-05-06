@@ -1486,7 +1486,6 @@
     currentUserProfile = null
     document.getElementById('profile-name').value = ''
     document.getElementById('profile-phone').value = ''
-    document.getElementById('profile-tags').innerHTML = ''
     document.getElementById('section-auth').classList.remove('hidden')
     document.getElementById('section-pending').classList.add('hidden')
     document.getElementById('section-app').classList.add('hidden')
@@ -2584,11 +2583,7 @@
     document.getElementById('profile-pw-strength-wrap').classList.add('hidden')
     document.getElementById('change-password-panel').classList.add('hidden')
     document.getElementById('toggle-change-password-btn').textContent = 'Show'
-    document.getElementById('profile-tags').innerHTML = '<p class="muted-empty">Loading...</p>'
-    const [{ data }, { data: tagsData }] = await Promise.all([
-      db.from('profiles').select('*').eq('id', currentUser.id).single(),
-      db.from('volunteer_tags').select('tag').eq('user_id', currentUser.id)
-    ])
+    const { data } = await db.from('profiles').select('*').eq('id', currentUser.id).single()
     document.getElementById('profile-email').textContent = currentUser.email || ''
     if (data) {
       document.getElementById('profile-name').value = data.full_name || ''
@@ -2600,16 +2595,6 @@
       document.getElementById('bio-char-count').textContent = bioVal.length
       renderAvatarDisplay('avatar-display', data.avatar_url, data.full_name, 120)
     }
-    const userTags = (tagsData || []).map(t => t.tag)
-    const container = document.getElementById('profile-tags')
-    container.innerHTML = SELF_ASSIGNABLE_TAGS.map(tagKey => `
-      <label class="check-label">
-        <input type="checkbox" id="profile-tag-${tagKey}" ${userTags.includes(tagKey) ? 'checked' : ''} />
-        ${TAGS[tagKey]}
-      </label>
-    `).join('') + (userTags.includes('bar_manager')
-      ? `<div style="margin-top:0.3rem;">${tagBadge('bar_manager')} <span style="font-size:0.8rem; color:#888;">(assigned by admin)</span></div>`
-      : '')
   }
 
   async function saveProfile() {
@@ -2636,11 +2621,6 @@
     if (error) return setStatus(error.message)
     currentUserProfile = { ...currentUserProfile, full_name, phone, instagram, facebook, bio }
     document.getElementById('profile-instagram').value = instagram
-    const selectedTags = SELF_ASSIGNABLE_TAGS.filter(k => document.getElementById(`profile-tag-${k}`)?.checked)
-    await db.from('volunteer_tags').delete().eq('user_id', currentUser.id).in('tag', SELF_ASSIGNABLE_TAGS)
-    if (selectedTags.length) {
-      await db.from('volunteer_tags').upsert(selectedTags.map(tag => ({ user_id: currentUser.id, tag })), { onConflict: 'user_id,tag' })
-    }
     setStatus('Profile saved!')
   }
 
@@ -2774,14 +2754,12 @@
     const [
       { data: profilesData },
       { data: pendingData },
-      { data: allTagsData },
       { data: allSignupsData },
       { data: allShiftsData },
       { data: emailConfirmedData }
     ] = await Promise.all([
       db.from('profiles').select('*').eq('status', 'approved').order('full_name'),
       db.from('profiles').select('*').eq('status', 'pending').order('created_at'),
-      db.from('volunteer_tags').select('*'),
       db.from('signups').select('user_id, shift_id, shifts(role_name, events(date, title))'),
       db.from('shifts').select('id, capacity, events(date)'),
       db.rpc('get_users_email_confirmed')
@@ -2803,7 +2781,6 @@
 
     allVolunteers = profilesData
     volunteerTagsByUser = {}
-    ;(allTagsData || []).forEach(t => { if (!volunteerTagsByUser[t.user_id]) volunteerTagsByUser[t.user_id] = []; volunteerTagsByUser[t.user_id].push(t.tag) })
 
     // Build per-volunteer signup lookup
     signupsByUser = {}
@@ -2879,16 +2856,7 @@
     const list = document.getElementById('admin-volunteers-list')
     if (!filtered.length) { list.innerHTML = '<p style="color:#aaa; font-size:0.9rem;">No volunteers match the filter.</p>'; return }
     list.innerHTML = filtered.map(p => {
-      const userTags = volunteerTagsByUser[p.id] || []
       const stats = volunteerStatsByUser[p.id]
-      const belowBadge = stats?.belowTarget
-        ? `<span class="badge-below-target">Below target</span>`
-        : ''
-      const tagCheckboxes = Object.keys(TAGS).map(tagKey => `
-        <label class="check-label" style="margin-bottom:0.3rem;">
-          <input type="checkbox" id="edit-vol-tag-${tagKey}-${p.id}" ${userTags.includes(tagKey) ? 'checked' : ''} />
-          ${TAGS[tagKey]}
-        </label>`).join('')
       const igHandle = (p.instagram || '').replace(/^@/, '')
       const igHref = igHandle ? safeSocialHref(p.instagram, 'instagram') : ''
       const fbHref = p.facebook ? safeSocialHref(p.facebook, 'facebook') : ''
@@ -2915,7 +2883,6 @@
         <div id="edit-volunteer-${p.id}" class="hidden vol-detail-panel">
           ${stats?.belowTarget ? `<p style="font-size:0.7rem; color:#b89a5a; text-transform:uppercase; letter-spacing:0.1em; font-weight:500; margin-bottom:0.65rem;">⚠ Below target</p>` : ''}
           <div id="vol-stats-${p.id}"></div>
-          ${userTags.length ? `<div style="margin:0.75rem 0 0;"><p class="vol-detail-section-label" style="margin-bottom:0.3rem;">Roles</p>${userTags.map(tagBadge).join('')}</div>` : ''}
           <div id="vol-history-${p.id}"><p style="color:#aaa; font-size:0.85rem;">Loading shift history…</p></div>
 
           <!-- Contact & social -->
@@ -2965,10 +2932,6 @@
             <div class="form-group form-check">
               <input type="checkbox" id="edit-vol-admin-${p.id}" ${p.is_admin ? 'checked' : ''} />
               <label>Admin access</label>
-            </div>
-            <div class="form-group">
-              <label>Roles</label>
-              <div style="margin-top:0.4rem;">${tagCheckboxes}</div>
             </div>
             <div class="inline-row" style="margin-top:0.5rem;">
               <button onclick="saveVolunteer('${p.id}')">Save</button>
@@ -3063,11 +3026,6 @@
     if (!full_name) return setStatus('Name is required.')
     const { error } = await db.from('profiles').update({ full_name, phone, instagram, facebook, bio, is_admin }).eq('id', id)
     if (error) return setStatus(error.message)
-    const selectedTags = Object.keys(TAGS).filter(k => document.getElementById(`edit-vol-tag-${k}-${id}`)?.checked)
-    await db.from('volunteer_tags').delete().eq('user_id', id)
-    if (selectedTags.length) {
-      await db.from('volunteer_tags').insert(selectedTags.map(tag => ({ user_id: id, tag })))
-    }
     setStatus('Volunteer updated!')
     await loadAdminVolunteers()
   }
@@ -3259,14 +3217,7 @@
       bioEl.style.display = bio ? 'block' : 'none'
     }
 
-    // Tags — fetch lazily
-    const tagsEl = document.getElementById('pop-tags')
-    tagsEl.innerHTML = ''
-    db.from('volunteer_tags').select('tag').eq('user_id', userId).then(({ data }) => {
-      if (data && data.length) {
-        tagsEl.innerHTML = data.map(r => tagBadge(r.tag)).join('')
-      }
-    })
+    document.getElementById('pop-tags').innerHTML = ''
 
     // Social
     const socialEl = document.getElementById('pop-social')
