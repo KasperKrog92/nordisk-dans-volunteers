@@ -17,9 +17,9 @@ export function emailLayout(bodyContent: string): string {
 
           <!-- Header -->
           <tr>
-            <td style="background:#1a1917;padding:28px 36px;">
-              <p style="margin:0;font-size:20px;font-weight:700;letter-spacing:0.16em;text-transform:uppercase;color:#ffffff;line-height:1;">NORDISK DANS</p>
-              <p style="margin:5px 0 0;font-size:10px;font-weight:400;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.5);line-height:1;">Volunteer Platform</p>
+            <td style="background:#C4991A;padding:30px 24px;text-align:center;">
+              <img src="https://kasperkrog92.github.io/nordisk-dans-volunteers/img/nordisk_dans_logo_transparent.png" width="70" alt="Nordisk Dans" style="display:block;margin:0 auto 10px;" />
+              <p style="margin:0;color:#fff;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Volunteer Platform</p>
             </td>
           </tr>
 
