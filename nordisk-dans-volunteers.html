@@ -1806,19 +1806,7 @@
     if (error) return setStatus(error.message)
     loadShifts(currentEvent.id)
     setupChat(currentEvent.id)
-    const { data: shift } = await db.from('shifts').select('role_name, description, start_time, end_time').eq('id', shiftId).single()
-    if (shift && confirm(`Thank you for signing up! Would you like to add "${shift.role_name}" at ${currentEvent.title} to your calendar?`)) {
-      downloadICS({
-        title: currentEvent.title,
-        date: currentEvent.date,
-        startTime: shift.start_time || null,
-        endTime: shift.end_time || null,
-        location: currentEvent.location || '',
-        role: shift.role_name,
-        shiftDescription: shift.description || null,
-        eventDescription: currentEvent.description || null
-      })
-    }
+    showToast('You have signed up for the shift!', 'success')
   }
 
   async function cancelSignup(shiftId) {
