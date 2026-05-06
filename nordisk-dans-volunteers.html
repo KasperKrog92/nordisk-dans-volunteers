@@ -1431,7 +1431,10 @@
         // Open registration — create account directly, no step 2
         const { error } = await db.auth.signUp({
           email, password,
-          options: { data: { full_name: fullName } }
+          options: {
+            data: { full_name: fullName },
+            emailRedirectTo: 'https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html'
+          }
         })
         if (error) return setStatus(error.message)
         document.getElementById('input-name').value = ''
@@ -1468,7 +1471,10 @@
 
     const { error } = await db.auth.signUp({
       email, password,
-      options: { data: { full_name: fullName, application_note: applicationNote } }
+      options: {
+        data: { full_name: fullName, application_note: applicationNote },
+        emailRedirectTo: 'https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html'
+      }
     })
     if (error) return setStatus(error.message)
 
