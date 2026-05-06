@@ -4,16 +4,18 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-Turkis Volunteer Platform is a volunteer management system for a music/DJ event venue. It handles event listings, shift sign-ups, real-time chat, and an admin dashboard.
+Nordisk Dans Volunteer Platform is a volunteer management system for the Nordisk Dans dance event organisation. It handles event listings, shift sign-ups, real-time chat, and an admin dashboard.
 
 ## Architecture
 
-**Single-file SPA** — The entire application lives in `turkis-volunteers.html` (~178 KB): all HTML, CSS, and JavaScript are embedded in one file. There is no build step, no npm, no bundler. Hosted at two URLs: `gamestormers.dk/turkis-volunteers.html` (primary) and `kasperkrog92.github.io/turkis-volunteers/` (GitHub Pages, redirects via `index.html`).
+**Single-file SPA** — The entire application lives in `nordisk-dans-volunteers.html`: all HTML, CSS, and JavaScript are embedded in one file. There is no build step, no npm, no bundler. Hosted at `kasperkrog92.github.io/nordisk-dans-volunteers/` (GitHub Pages, redirects via `index.html`).
 
 **Tech stack:**
 - Vanilla JavaScript (no framework)
 - Supabase JS client v2.38.0 (loaded via CDN) for database, auth, storage, and edge functions
 - Google Fonts (Inter) via CDN
+
+**Images:** Logos live in `img/`. `nordisk_dans_logo.png` is used for the header, favicon, and event thumbnails. `nordisk_dans_logo_transparent.png` is used as the default event banner.
 
 **Storage buckets:** `avatars`, `event-images`, `event-files` (managed via Supabase Storage).
 
@@ -31,6 +33,8 @@ Turkis Volunteer Platform is a volunteer management system for a music/DJ event 
 
 ## Database (Supabase PostgreSQL)
 
+Supabase project: `nmhmuaggsnsgswvfjaxh` (shared with Turkis during transition — see to-do in README).
+
 Tables: `profiles`, `volunteer_tags`, `app_settings`, `events`, `shifts`, `signups`, `event_files`, `messages`, `chat_notification_log`.
 
 `chat_notification_log` deduplicates chat email notifications (tracks which messages have already triggered a `notify-chat` email so users aren't spammed).
@@ -41,7 +45,7 @@ Tables: `profiles`, `volunteer_tags`, `app_settings`, `events`, `shifts`, `signu
 
 Volunteer status values on `profiles.status`: `pending`, `approved`, `rejected`.
 
-Available interest tags (stored in `volunteer_tags`): `bar_wardrobe_entrance`, `backstage_manager`, `light_operator`, `bar_manager`. Only the first three are self-assignable; `bar_manager` is admin-assigned.
+Available interest tags (stored in `volunteer_tags`): `bar_wardrobe_entrance`, `backstage_manager`, `light_operator`, `bar_manager`. Only the first three are self-assignable; `bar_manager` is admin-assigned. **These were inherited from Turkis and likely need updating for Nordisk Dans — see README to-do.**
 
 ## Edge Functions
 
@@ -63,6 +67,8 @@ The Supabase CLI binary is at `C:\Users\kaspe\bin\supabase.exe` — it is not on
 - `notify-cancellation` — emails when a volunteer cancels a shift
 - `notify-new-application` — emails admins when a new volunteer applies
 
+**Note:** Edge function email content (FROM_EMAIL, APP_URL, sender names, venue address) still references Turkis — see README to-do.
+
 ## RLS Notes
 
 `app_settings` has SELECT policies for both `authenticated` and `anon` roles — it must be readable before login (to check `registration_requires_approval` on the signup screen).
@@ -74,3 +80,4 @@ The Supabase CLI binary is at `C:\Users\kaspe\bin\supabase.exe` — it is not on
 - Event images are client-side compressed before upload (canvas-based, target ≤ 500 KB)
 - Calendar export generates `.ics` files in-browser via a Blob URL
 - Password strength is validated client-side with a visual meter before submission
+- Primary accent colour: `#C4991A` (gold), hover: `#9a7500`
