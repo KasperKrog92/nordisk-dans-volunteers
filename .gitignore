@@ -1,0 +1,8 @@
+# Claude Code local settings
+.claude/
+
+# Supabase CLI temp files
+supabase/.temp/
+
+# macOS metadata
+__MACOSX/
