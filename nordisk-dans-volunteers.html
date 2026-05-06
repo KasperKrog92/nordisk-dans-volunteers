@@ -1410,7 +1410,7 @@
     if (!email) return setStatus('Please enter your email.')
     const { error } = await db.auth.signInWithOtp({
       email,
-      options: { emailRedirectTo: 'https://kasperkrog92.github.io/nordisk-dans-volunteers/' }
+      options: { emailRedirectTo: 'https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html' }
     })
     if (error) return setStatus(error.message)
     setStatus('Check your email for a login link.')

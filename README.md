@@ -43,7 +43,6 @@ Edge functions are in `supabase/functions/`. Deploy with:
 
 ### Before go-live
 
-- [ ] Enable GitHub Pages on this repo (Settings → Pages → Source: `main` branch, `/ (root)`)
 - [ ] Clear existing Turkis volunteer data from the database (profiles, signups, events, shifts, messages)
 - [ ] Update the volunteer onboarding notice in `nordisk-dans-volunteers.html` (search for `notice-warm`) with Northside 2026-specific wording
 

@@ -72,7 +72,7 @@ Deno.serve(async (req) => {
       heading(`New message in ${eventTitle}`) +
       p(`<strong>${senderName}</strong> posted in the event chat:`) +
       callout(preview.replace(/\n/g, "<br>")) +
-      button("Open event chat", `https://kasperkrog92.github.io/nordisk-dans-volunteers/#event/${eventId}`) +
+      button("Open event chat", `https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html#event/${eventId}`) +
       p("You're receiving this because you are signed up for this event.", true)
     );
 

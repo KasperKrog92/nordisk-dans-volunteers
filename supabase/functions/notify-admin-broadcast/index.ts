@@ -72,7 +72,7 @@ Deno.serve(async (req) => {
       heading(subject) +
       p(`A message from <strong>${fromLabel}</strong>:`) +
       callout(message.replace(/\n/g, "<br>")) +
-      button("Open event", `https://kasperkrog92.github.io/nordisk-dans-volunteers/#event/${event_id}`) +
+      button("Open event", `https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html#event/${event_id}`) +
       p("This message was sent to all volunteers signed up for your event.", true)
     );
 

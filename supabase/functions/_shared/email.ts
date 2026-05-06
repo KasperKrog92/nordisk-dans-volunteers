@@ -1,6 +1,6 @@
 ﻿// Shared branded email templates for Nordisk Dans volunteer platform.
 
-const APP_URL = "https://kasperkrog92.github.io/nordisk-dans-volunteers/";
+const APP_URL = "https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html";
 
 export function emailLayout(bodyContent: string): string {
   return `<!DOCTYPE html>

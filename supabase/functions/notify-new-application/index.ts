@@ -44,7 +44,7 @@ Deno.serve(async (req) => {
             ["Name", applicantName],
             ["Email", profile.email || "—"],
           ]) +
-          button("Review in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/#admin")
+          button("Review in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html#admin")
         )
       : emailLayout(
           heading("New volunteer signed up") +
@@ -53,7 +53,7 @@ Deno.serve(async (req) => {
             ["Name", applicantName],
             ["Email", profile.email || "—"],
           ]) +
-          button("View in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/#admin")
+          button("View in admin panel", "https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html#admin")
         );
 
     await Promise.allSettled(
