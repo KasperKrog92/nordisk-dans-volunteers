@@ -1,12 +1,13 @@
 # Nordisk Dans Volunteer Platform
 
-A volunteer management system for the Nordisk Dans dance event organisation. Volunteers can browse events, sign up for shifts, chat with the team, and manage their profiles. Admins can create events, manage volunteers, and send broadcasts.
+A volunteer management system built for Nordisk Dans. Currently scoped for **Northside 2026** — a three-day music festival where Nordisk Dans needs approximately 30 volunteers per day. Volunteers can browse events, sign up for shifts, and chat with the team. Admins can create events, manage volunteers, and send email broadcasts.
 
 ## Stack
 
 - Vanilla JavaScript SPA (single `nordisk-dans-volunteers.html` file — no build step)
 - [Supabase](https://supabase.com) for database, auth, storage, and edge functions
 - Hosted at `kasperkrog92.github.io/nordisk-dans-volunteers/` via GitHub Pages
+- Emails sent via [Resend](https://resend.com) from `kasper@gamestormers.dk`
 
 ## Development
 
@@ -22,7 +23,7 @@ All changes are made in `nordisk-dans-volunteers.html`. Deploy by pushing to `ma
 
 ## Supabase
 
-Currently linked to the same Supabase project as Turkis (`nmhmuaggsnsgswvfjaxh`, region: Stockholm) during the transition period.
+Linked to project `nmhmuaggsnsgswvfjaxh` (region: Stockholm).
 
 ```bash
 supabase link --project-ref nmhmuaggsnsgswvfjaxh
@@ -30,42 +31,22 @@ supabase functions list
 supabase inspect db table-stats
 ```
 
+Edge functions are in `supabase/functions/`. Deploy with:
+
+```powershell
+& "C:\Users\kaspe\bin\supabase.exe" functions deploy <function-name> --project-ref nmhmuaggsnsgswvfjaxh
+```
+
 ---
 
 ## To-do
 
-### Supabase / backend
+### Before go-live
 
-- [ ] Decide: separate Supabase project for Nordisk Dans, or clean the existing one? If new project, update `SUPABASE_URL` and `SUPABASE_KEY` in `nordisk-dans-volunteers.html` (lines ~1344–1345)
-- [ ] Add `https://kasperkrog92.github.io/nordisk-dans-volunteers/` to **Supabase Auth → URL Configuration → Redirect URLs**
-- [ ] Create Kasper Krog's account and set `is_admin = true` in the `profiles` table
-- [ ] Clear or migrate existing Turkis volunteer data (profiles, signups, events, shifts, messages) so the platform starts fresh
+- [ ] Enable GitHub Pages on this repo (Settings → Pages → Source: `main` branch, `/ (root)`)
+- [ ] Clear existing Turkis volunteer data from the database (profiles, signups, events, shifts, messages)
+- [ ] Update the volunteer onboarding notice in `nordisk-dans-volunteers.html` (search for `notice-warm`) with Northside 2026-specific wording
 
-### Edge functions — email content still references Turkis
+### Nice to have
 
-All functions in `supabase/functions/` need updating, then redeploying:
-
-- [ ] `_shared/email.ts` — update `APP_URL`, venue address footer (`Vester Allé 15, 8000 Aarhus C`), and contact email (`volunteers@gamestormers.dk`)
-- [ ] `notify-approval/index.ts` — update email body and subject ("welcome to Turkis" → "welcome to Nordisk Dans")
-- [ ] `notify-admin-broadcast/index.ts` — update `FROM_EMAIL`, fallback sender name, event link URL
-- [ ] `notify-volunteer-broadcast/index.ts` — update `FROM_EMAIL`, fallback sender name, footer text
-- [ ] `notify-new-application/index.ts` — update `FROM_EMAIL`, email body, admin panel link
-- [ ] `notify-chat/index.ts` — update `FROM_EMAIL`, email subject suffix, event chat link
-- [ ] `notify-cancellation/index.ts` — update `FROM_EMAIL`, admin event link URL
-- [ ] Set up a sender email address for Nordisk Dans (currently `volunteers@gamestormers.dk`) — needs a verified domain in Supabase or a transactional email provider
-
-### Volunteer roles
-
-- [ ] Review the interest tags inherited from Turkis: `bar_wardrobe_entrance`, `backstage_manager`, `light_operator`, `bar_manager` — update labels and/or values to match Nordisk Dans roles
-- [ ] Update the role display names in the sign-up form and profile view in `nordisk-dans-volunteers.html` to match
-
-### GitHub Pages
-
-- [ ] Enable GitHub Pages on the `nordisk-dans-volunteers` repo (Settings → Pages → Source: `main` branch, `/ (root)`)
-- [ ] Verify the site loads correctly at `https://kasperkrog92.github.io/nordisk-dans-volunteers/`
-
-### Content / copy
-
-- [ ] Update the "notice-warm" onboarding text (currently generic Turkis copy) with Nordisk Dans-specific wording
-- [ ] Confirm or update the default event location used in `.ics` calendar exports (currently hardcoded to `Vester Allé 15, 8000 Aarhus C` in `nordisk-dans-volunteers.html`)
-- [ ] Add a proper default event banner image (`nordisk-dans-event-default.png`) — currently falls back to the transparent logo
+- [ ] Add a proper default event banner image to `img/` and update the `nordisk-dans-event-default.png` reference in `nordisk-dans-volunteers.html` — currently falls back to the transparent logo
