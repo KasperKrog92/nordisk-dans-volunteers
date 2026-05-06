@@ -1,4 +1,4 @@
-// Shared branded email templates for Nordisk Dans volunteer platform.
+﻿// Shared branded email templates for Nordisk Dans volunteer platform.
 
 const APP_URL = "https://kasperkrog92.github.io/nordisk-dans-volunteers/";
 
@@ -35,7 +35,7 @@ export function emailLayout(bodyContent: string): string {
             <td style="background:#fafaf8;border-top:1px solid #e8e0d8;padding:20px 36px;">
               <p style="margin:0;font-size:11px;color:#bbb;line-height:1.7;letter-spacing:0.02em;">
                 Nordisk Dans<br>
-                <a href="mailto:kkandersen01@gmail.com" style="color:#bbb;text-decoration:none;">kkandersen01@gmail.com</a>
+                <a href="mailto:kasper@gamestormers.dk" style="color:#bbb;text-decoration:none;">kasper@gamestormers.dk</a>
               </p>
             </td>
           </tr>

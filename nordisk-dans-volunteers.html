@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -68,7 +68,7 @@
     }
     input[type="checkbox"]:checked { background: #C4991A; border-color: #C4991A; }
     input[type="checkbox"]:checked::after {
-      content: '✓';
+      content: 'âœ“';
       position: absolute;
       top: 50%; left: 50%;
       transform: translate(-50%, -50%);
@@ -436,7 +436,7 @@
       .vol-stats-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem 1.5rem; }
       .vol-filter-wrap { display: grid !important; grid-template-columns: 1fr 1fr; gap: 0.5rem 0.8rem; align-items: center; }
     }
-    /* ── Avatar & Profile Popover ─────────────────────────── */
+    /* â”€â”€ Avatar & Profile Popover â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .avatar-circle {
       width: 80px; height: 80px; border-radius: 50%;
       object-fit: cover; display: block; border: 2px solid #e8e0d8;
@@ -513,13 +513,13 @@
       border-radius: 50%; object-fit: cover;
       box-shadow: 0 8px 40px rgba(0,0,0,0.5);
     }
-    /* ── Utilities ────────────────────────────────────────── */
+    /* â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .section-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
     .section-header h3 { margin-bottom: 0; }
     .btn-sm { width: auto; padding: 0.3rem 0.9rem; font-size: 0.75rem; margin-bottom: 0; }
     .form-row { display: flex; gap: 1rem; }
     .form-row > div { flex: 1; }
-    /* ── ID-specific styles (moved from inline) ───────────── */
+    /* â”€â”€ ID-specific styles (moved from inline) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     #logo-header { padding: 2rem 1rem 1rem; text-align: center; cursor: pointer; }
     #logo-header img { height: 5rem; display: block; margin: 0 auto; mix-blend-mode: multiply; }
     #logo-header p { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; margin-top: 0.5rem; }
@@ -563,10 +563,10 @@
     .template-label { font-size: 0.75rem; color: #888; margin-bottom: 0.4rem; text-transform: uppercase; letter-spacing: 0.04em; }
     .template-row { display: flex; flex-wrap: wrap; gap: 0.4rem; }
     #shift-template-warning { display: none; font-size: 0.78rem; color: #b05c1a; margin-top: 0.4rem; }
-    /* ── Card tap feedback ────────────────────────────────── */
+    /* â”€â”€ Card tap feedback â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .card[onclick] { -webkit-tap-highlight-color: transparent; }
     .card[onclick]:active { opacity: 0.5; transition: opacity 0.08s; }
-    /* ── Loading spinner ──────────────────────────────────── */
+    /* â”€â”€ Loading spinner â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .view-spinner {
       display: flex; align-items: center; justify-content: center;
       padding: 3rem 0;
@@ -580,7 +580,7 @@
       animation: spin 0.7s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    /* ── JS-template classes ──────────────────────────────── */
+    /* â”€â”€ JS-template classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     .card-title { font-size: 1.1rem; font-weight: 600; letter-spacing: 0; color: #111; margin-top: 0.2rem; }
     .card-title-sm { font-size: 1rem; font-weight: 600; letter-spacing: 0; color: #111; margin-top: 0.2rem; }
     .shift-role-name { font-size: 1rem; font-weight: 600; letter-spacing: 0; color: #111; }
@@ -621,7 +621,7 @@
     }
     .event-url-pill:hover { background: #d8f0ef; }
 
-    /* ── Admin Volunteer Card (redesigned) ───────────────── */
+    /* â”€â”€ Admin Volunteer Card (redesigned) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
     /* Two-column grid */
     #admin-volunteers-list {
       display: grid;
@@ -710,7 +710,7 @@
       display: flex; align-items: center; gap: 0.4rem; user-select: none;
     }
     .vol-appnote-summary::-webkit-details-marker { display: none; }
-    .vol-appnote-summary::after { content: '▼'; font-size: 0.55rem; transition: transform 0.2s; opacity: 0.6; }
+    .vol-appnote-summary::after { content: 'â–¼'; font-size: 0.55rem; transition: transform 0.2s; opacity: 0.6; }
     .vol-appnote-details[open] .vol-appnote-summary::after { transform: rotate(180deg); }
     .vol-appnote-body {
       font-size: 0.85rem; color: #555; font-weight: 300; line-height: 1.55;
@@ -740,7 +740,7 @@
 
 <!-- Profile popover card -->
 <div id="profile-popover" role="dialog" aria-modal="false">
-  <button class="pop-close" onclick="closeProfilePopover()" aria-label="Close">✕</button>
+  <button class="pop-close" onclick="closeProfilePopover()" aria-label="Close">âœ•</button>
   <div class="pop-header">
     <div id="pop-avatar"></div>
     <div style="flex:1; min-width:0;">
@@ -754,7 +754,7 @@
 
 <div id="toast" role="status" aria-live="polite">
   <span id="toast-msg"></span>
-  <button id="toast-close" onclick="setStatus('')" aria-label="Dismiss">✕</button>
+  <button id="toast-close" onclick="setStatus('')" aria-label="Dismiss">âœ•</button>
 </div>
 <div id="app">
   <div id="logo-header" onclick="if (!document.getElementById('section-app').classList.contains('hidden')) showView('events')">
@@ -765,11 +765,11 @@
 
   <!-- AUTH SECTION -->
   <div id="section-auth">
-    <!-- Login / signup form — Step 1 -->
+    <!-- Login / signup form â€” Step 1 -->
     <div id="auth-main" class="card-box" style="max-width:520px; margin: 0 auto;">
       <p id="auth-step-indicator" class="hidden">Step 1 of 2</p>
       <h2 id="auth-title">Log in</h2>
-      <p id="auth-intro" class="hidden">Become part of the Nordisk Dans family — a volunteer community defined by warmth, good people and a love of dance.</p>
+      <p id="auth-intro" class="hidden">Become part of the Nordisk Dans family â€” a volunteer community defined by warmth, good people and a love of dance.</p>
       <div id="field-name" class="form-group">
         <label>Full name</label>
         <input type="text" id="input-name" placeholder="Your full name" />
@@ -810,19 +810,19 @@
       </button>
     </div>
 
-    <!-- Application form — Step 2 -->
+    <!-- Application form â€” Step 2 -->
     <div id="auth-step2" class="card-box hidden" style="max-width:520px; margin: 0 auto;">
       <p id="auth-step2-indicator">Step 2 of 2</p>
       <h2>Tell us about yourself</h2>
       <p class="back-link-wrap">
-        <a href="#" onclick="goBackToStep1(); return false;" class="back-link">← Back</a>
+        <a href="#" onclick="goBackToStep1(); return false;" class="back-link">â† Back</a>
       </p>
       <div class="form-group">
         <label>Motivation &amp; experience (optional)</label>
         <textarea id="application-motivation" rows="4" placeholder="Tell us a bit about yourself, any relevant experience, and what draws you to Nordisk Dans..."></textarea>
       </div>
       <div class="notice-warm">
-        💛 At Nordisk Dans, our community runs on the energy and dedication of our volunteers — you are what makes the magic happen. We ask that if you sign up for a shift, you do your best to show up, as the team counts on you. Life happens and we always understand if something comes up, but please be honest with yourself about your availability before signing up. We aim for volunteers to take around two shifts per month, but we'd rather have you when you can than not at all.
+        ðŸ’› At Nordisk Dans, our community runs on the energy and dedication of our volunteers â€” you are what makes the magic happen. We ask that if you sign up for a shift, you do your best to show up, as the team counts on you. Life happens and we always understand if something comes up, but please be honest with yourself about your availability before signing up. We aim for volunteers to take around two shifts per month, but we'd rather have you when you can than not at all.
       </div>
       <button onclick="submitApplication()">Send application</button>
     </div>
@@ -846,7 +846,7 @@
   <div id="section-pending" class="hidden">
     <div class="card-box" style="max-width:480px;">
       <h2>Application received</h2>
-      <p>Your application has been received. An admin will review it shortly — you'll get an email when you're approved.</p>
+      <p>Your application has been received. An admin will review it shortly â€” you'll get an email when you're approved.</p>
       <button class="secondary" onclick="signOut()" style="width:auto;">Sign out</button>
     </div>
   </div>
@@ -859,7 +859,7 @@
       </button>
       <button id="nav-events" class="nav-active" onclick="showView('events')">Events</button>
       <button id="nav-my-shifts" onclick="showView('my-shifts')">My shifts</button>
-      <button id="nav-admin" class="hidden" onclick="showView('admin')">⚙ Admin</button>
+      <button id="nav-admin" class="hidden" onclick="showView('admin')">âš™ Admin</button>
       <button id="nav-profile" onclick="showView('profile')">My profile</button>
       <button class="nav-signout" onclick="signOut()">Sign out</button>
     </nav>
@@ -877,7 +877,7 @@
     <!-- EVENT DETAIL VIEW -->
     <div id="view-event-detail" class="hidden">
       <div class="detail-back-row">
-        <button class="secondary btn-sm" onclick="showView('events')">← Back</button>
+        <button class="secondary btn-sm" onclick="showView('events')">â† Back</button>
         <button id="btn-edit-event" class="secondary btn-sm hidden" onclick="openAdminEvent(currentEvent.id)">Edit event</button>
       </div>
       <div id="detail-loading" class="view-spinner hidden"></div>
@@ -894,7 +894,7 @@
           <span id="detail-url"></span>
         </div>
         <div id="detail-description-wrap"><p id="detail-description"></p></div>
-        <button id="btn-desc-more" onclick="toggleDescMore()">Show more ↓</button>
+        <button id="btn-desc-more" onclick="toggleDescMore()">Show more â†“</button>
       </div>
       <!-- Files section -->
       <div id="detail-files-section" class="event-section event-section-files hidden">
@@ -905,7 +905,7 @@
       <div class="event-section event-section-shifts">
         <div class="section-toggle-header" onclick="toggleShifts()">
           <h3>Shifts</h3>
-          <span class="section-chevron collapsed" id="shifts-chevron">▼</span>
+          <span class="section-chevron collapsed" id="shifts-chevron">â–¼</span>
         </div>
         <div id="shifts-body" style="display:none;">
           <div id="shifts-list">Loading...</div>
@@ -969,7 +969,7 @@
 
         <div class="form-group">
           <label>About me (optional)</label>
-          <textarea id="profile-bio" rows="2" maxlength="100" placeholder="One sentence about yourself…" class="auto-resize" style="resize:none;"></textarea>
+          <textarea id="profile-bio" rows="2" maxlength="100" placeholder="One sentence about yourselfâ€¦" class="auto-resize" style="resize:none;"></textarea>
           <p style="font-size:0.7rem; color:#bbb; margin:0; text-align:right; font-family:'Inter',sans-serif;"><span id="bio-char-count">0</span> / 100</p>
         </div>
 
@@ -1072,7 +1072,7 @@
           </div>
           <div class="form-group">
             <label>Location</label>
-            <input type="text" id="admin-event-location" value="Vester Allé 15, 8000 Aarhus C" />
+            <input type="text" id="admin-event-location" value="Vester AllÃ© 15, 8000 Aarhus C" />
           </div>
           <div class="form-group">
             <label>Website link (optional)</label>
@@ -1158,7 +1158,7 @@
 
     <!-- ADMIN EVENT DETAIL VIEW -->
     <div id="view-admin-event" class="hidden">
-      <button class="secondary btn-sm" onclick="showView('admin')" style="margin-bottom:1.5rem;">← Back to admin</button>
+      <button class="secondary btn-sm" onclick="showView('admin')" style="margin-bottom:1.5rem;">â† Back to admin</button>
       <div id="admin-event-loading" class="view-spinner hidden"></div>
       <h2 id="admin-detail-title"></h2>
       <p id="admin-detail-date"></p>
@@ -1271,10 +1271,10 @@
 </div>
 
 <script>
-  // ── CONFIG ──────────────────────────────────────────────
+  // â”€â”€ CONFIG â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   const SUPABASE_URL = 'https://nmhmuaggsnsgswvfjaxh.supabase.co'
   const SUPABASE_KEY = 'sb_publishable_BJRJLMyp-D4T-Vj9sAu-Cw_JuYD_x86'
-  // ────────────────────────────────────────────────────────
+  // â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
   let currentUser = null
   let currentUserProfile = null
@@ -1303,7 +1303,7 @@
   let signupsByUser = {}
   let emailConfirmedByUser = {}
 
-  // ── AUTH ─────────────────────────────────────────────────
+  // â”€â”€ AUTH â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   ;(async () => {
     const { data } = await db.from('app_settings').select('value').eq('key', 'registration_requires_approval').single()
     registrationRequiresApproval = !data || data.value !== 'false'
@@ -1346,8 +1346,8 @@
     const colors = ['#e8e0d8', '#e05c3a', '#e0a040', '#C4991A']
     const hasLetters = /[A-Za-z]/.test(pw)
     const hasNumbers = /[0-9]/.test(pw)
-    const weakLabel = !hasLetters ? 'Weak — add letters' : !hasNumbers ? 'Weak — add numbers or symbols' : 'Weak — try a longer password'
-    const labels = ['', weakLabel, 'Fair — try a longer password or add symbols', 'Strong']
+    const weakLabel = !hasLetters ? 'Weak â€” add letters' : !hasNumbers ? 'Weak â€” add numbers or symbols' : 'Weak â€” try a longer password'
+    const labels = ['', weakLabel, 'Fair â€” try a longer password or add symbols', 'Strong']
     const labelColors = ['#aaa', '#c0392b', '#b8860b', '#C4991A']
     const wrap = document.getElementById(`${prefix}pw-strength-wrap`)
     if (wrap) wrap.classList.toggle('hidden', !pw)
@@ -1428,7 +1428,7 @@
       const pwErr = validatePasswordStrength(password)
       if (pwErr) return setStatus(pwErr)
       if (!registrationRequiresApproval) {
-        // Open registration — create account directly, no step 2
+        // Open registration â€” create account directly, no step 2
         const { error } = await db.auth.signUp({
           email, password,
           options: { data: { full_name: fullName } }
@@ -1441,7 +1441,7 @@
         setStatus('Check your email to confirm your account, then log in.')
         return
       }
-      // Approval required — advance to Step 2
+      // Approval required â€” advance to Step 2
       document.getElementById('auth-main').classList.add('hidden')
       document.getElementById('auth-step2').classList.remove('hidden')
     } else {
@@ -1499,7 +1499,7 @@
     el.style.height = el.scrollHeight + 'px'
   }
 
-  // ── VIEWS ─────────────────────────────────────────────────
+  // â”€â”€ VIEWS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function toggleNav() {
     document.getElementById('main-nav').classList.toggle('nav-open')
   }
@@ -1585,7 +1585,7 @@
     })
   })()
 
-  // ── EVENTS ────────────────────────────────────────────────
+  // â”€â”€ EVENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let currentEventsTab = 'upcoming'
 
   function switchEventsTab(tab) {
@@ -1599,7 +1599,7 @@
     const wrap = document.getElementById('detail-description-wrap')
     const btn = document.getElementById('btn-desc-more')
     const expanded = wrap.classList.toggle('expanded')
-    btn.textContent = expanded ? 'Show less ↑' : 'Show more ↓'
+    btn.textContent = expanded ? 'Show less â†‘' : 'Show more â†“'
   }
 
   function toggleShifts() {
@@ -1648,7 +1648,7 @@
       <div style="margin-bottom:0.5rem;">
         <button class="month-toggle" onclick="toggleMonthSection('ev-${month}')">
           ${formatMonthHeading(month)}
-          <span class="month-chevron" id="ev-${month}-chev">▾</span>
+          <span class="month-chevron" id="ev-${month}-chev">â–¾</span>
         </button>
         <div id="ev-${month}" style="padding-left:0.9rem;">
           ${events.map((e, i) => `
@@ -1656,7 +1656,7 @@
               <div style="display:flex; gap:0.8rem; align-items:flex-start;">
                 ${(e.image_url || defaultThumbnailUrl) ? `<img class="event-img-thumb${e.image_url ? ' event-img-thumb--cover' : ''}" src="${escAttr(e.image_url || defaultThumbnailUrl)}" alt="" loading="lazy" />` : ''}
                 <div style="flex:1; min-width:0;">
-                  <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' – ' + formatDate(e.end_date) : formatDate(e.date)}</span>
+                  <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' â€“ ' + formatDate(e.end_date) : formatDate(e.date)}</span>
                   <div class="card-title">${esc(e.title)}</div>
                   ${e.description ? `<p style="color:#555; font-size:0.85rem; margin-top:0.3rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:600px;">${esc(e.description.replace(/\n[\s\S]*/,'').slice(0,120))}</p>` : ''}
                 </div>
@@ -1689,7 +1689,7 @@
     const btnMore = document.getElementById('btn-desc-more')
     descEl.innerHTML = e.description ? e.description.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/\n/g,'<br>') : ''
     descWrap.classList.remove('expanded')
-    btnMore.textContent = 'Show more ↓'
+    btnMore.textContent = 'Show more â†“'
     // Show button only if content overflows the collapsed height
     btnMore.style.display = 'none'
     requestAnimationFrame(() => {
@@ -1703,7 +1703,7 @@
     imgWrap.innerHTML = e.image_url
       ? `<div style="position:relative;">
            <img id="detail-event-img" class="event-img-header" src="${escAttr(e.image_url)}" alt="" />
-           <button onclick="toggleFullImage()" id="btn-full-img" style="position:absolute; bottom:0.5rem; right:0.6rem; width:auto; padding:0; font-size:0.7rem; letter-spacing:0.06em; background:none; border:none; color:rgba(255,255,255,0.6); margin-bottom:0; text-shadow:0 1px 3px rgba(0,0,0,0.5);">Show full ↕</button>
+           <button onclick="toggleFullImage()" id="btn-full-img" style="position:absolute; bottom:0.5rem; right:0.6rem; width:auto; padding:0; font-size:0.7rem; letter-spacing:0.06em; background:none; border:none; color:rgba(255,255,255,0.6); margin-bottom:0; text-shadow:0 1px 3px rgba(0,0,0,0.5);">Show full â†•</button>
          </div>`
       : `<img class="event-img-header event-img-header--default" src="img/nordisk_dans_logo_transparent.png" alt="Nordisk Dans" />`
     document.getElementById('btn-edit-event').classList.toggle('hidden', !currentUserProfile?.is_admin)
@@ -1717,7 +1717,7 @@
     setupChat(id)
   }
 
-  // ── SHIFTS ────────────────────────────────────────────────
+  // â”€â”€ SHIFTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadShifts(eventId) {
     document.getElementById('shifts-list').innerHTML = '<p class="muted-empty">Loading...</p>'
     const { data: shifts } = await db.from('shifts').select('*').eq('event_id', eventId)
@@ -1741,7 +1741,7 @@
       const count = countMap[s.id] || 0
       const isMine = myShiftIds.includes(s.id)
       const full = count >= s.capacity && !isMine
-      const time = s.start_time ? `${formatTime(s.start_time)} – ${formatTime(s.end_time)}` : ''
+      const time = s.start_time ? `${formatTime(s.start_time)} â€“ ${formatTime(s.end_time)}` : ''
       const shiftProfiles = (eventSignups || [])
         .filter(sp => sp.shift_id === s.id && sp.profiles?.full_name)
         .map(sp => sp.profiles)
@@ -1753,7 +1753,7 @@
         ? ''
         : isMine
         ? cancellationLocked
-          ? `<span style="font-size:0.75rem; color:#aaa; text-align:right; line-height:1.5; display:inline-block;">Cancellation locked<br><a href="mailto:kkandersen01@gmail.com" style="color:#888; text-decoration:underline;">Contact Kasper Krog</a></span>`
+          ? `<span style="font-size:0.75rem; color:#aaa; text-align:right; line-height:1.5; display:inline-block;">Cancellation locked<br><a href="mailto:kasper@gamestormers.dk" style="color:#888; text-decoration:underline;">Contact Kasper Krog</a></span>`
           : `<button class="secondary" onclick="cancelSignup('${s.id}')" style="width:auto; padding:0.3rem 0.9rem; margin-bottom:0; font-size:0.78rem;">Cancel signup</button>`
         : full
         ? `<button disabled style="width:auto; padding:0.3rem 0.9rem; margin-bottom:0; font-size:0.78rem;">Full</button>`
@@ -1831,7 +1831,7 @@
     setupChat(currentEvent.id)
   }
 
-  // ── MY SHIFTS ─────────────────────────────────────────────
+  // â”€â”€ MY SHIFTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let currentShiftsTab = 'upcoming'
 
   function switchShiftsTab(tab) {
@@ -1870,7 +1870,7 @@
           ${items.map(s => {
             const shift = s.shifts
             const event = shift.events
-            const time = shift.start_time ? `${formatTime(shift.start_time)} – ${formatTime(shift.end_time)}` : ''
+            const time = shift.start_time ? `${formatTime(shift.start_time)} â€“ ${formatTime(shift.end_time)}` : ''
             return `
               <a href="#event/${event.id}" class="card" style="cursor:pointer;display:block;text-decoration:none;color:inherit;" onclick="if(!event.ctrlKey&&!event.metaKey){openEvent('${event.id}');return false;}">
                 <div style="display:flex; gap:0.8rem; align-items:flex-start;">
@@ -1878,7 +1878,7 @@
                   <div style="flex:1; min-width:0;">
                     <span class="tag date-tag">${formatDate(event.date)}</span>
                     <div class="card-title">${esc(event.title)}</div>
-                    <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
+                    <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` Â· ${time}` : ''}</p>
                   </div>
                 </div>
               </a>
@@ -1889,7 +1889,7 @@
     `).join('')
   }
 
-  // ── CHAT ──────────────────────────────────────────────────
+  // â”€â”€ CHAT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function setupChat(eventId) {
     document.getElementById('chat-input').value = ''
     document.getElementById('chat-box').innerHTML = ''
@@ -1978,7 +1978,7 @@
     const todayStr = new Date().toLocaleDateString('sv-SE', { timeZone: TZ })
     if (dateStr === todayStr) return time
     const [y, m, day] = dateStr.split('-')
-    return `${day}.${m}.${y} · ${time}`
+    return `${day}.${m}.${y} Â· ${time}`
   }
 
   function appendMessage(msg) {
@@ -1987,7 +1987,7 @@
     const sender = p.full_name || 'Volunteer'
     const ts = msg.created_at ? formatChatTimestamp(msg.created_at) : ''
     const deleteBtn = currentUserProfile?.is_admin
-      ? `<button class="chat-delete" onclick="deleteMessage('${msg.id}')" title="Delete message">×</button>`
+      ? `<button class="chat-delete" onclick="deleteMessage('${msg.id}')" title="Delete message">Ã—</button>`
       : ''
     if (p.id) { window._profileStore = window._profileStore || {}; window._profileStore[p.id] = p }
     const senderHtml = p.id
@@ -2003,7 +2003,7 @@
     if (!confirm('Delete this message?')) return
     const { data, error } = await db.from('messages').delete().eq('id', id).select()
     if (error) { setStatus('Could not delete message: ' + error.message); return }
-    if (!data || !data.length) { setStatus('Delete blocked — check Supabase RLS policy on the messages table.'); return }
+    if (!data || !data.length) { setStatus('Delete blocked â€” check Supabase RLS policy on the messages table.'); return }
     loadMessages(currentEvent.id)
   }
 
@@ -2016,12 +2016,12 @@
     loadMessages(currentEvent.id)
   }
 
-  // ── ADMIN: EVENTS ─────────────────────────────────────────
+  // â”€â”€ ADMIN: EVENTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function toggleNewEventForm() {
     const form = document.getElementById('new-event-form')
     const btn = document.getElementById('toggle-new-event-btn')
     const isHidden = form.classList.toggle('hidden')
-    btn.textContent = isHidden ? '+ Create new event' : '− Create new event'
+    btn.textContent = isHidden ? '+ Create new event' : 'âˆ’ Create new event'
   }
 
   async function submitNewEvent() {
@@ -2030,7 +2030,7 @@
     const endVal = document.getElementById('admin-event-end').value
     const description = document.getElementById('admin-event-desc').value.trim()
     const website_url = document.getElementById('admin-event-url').value.trim() || null
-    const location = document.getElementById('admin-event-location').value.trim() || 'Vester Allé 15, 8000 Aarhus C'
+    const location = document.getElementById('admin-event-location').value.trim() || 'Vester AllÃ© 15, 8000 Aarhus C'
     const published = document.getElementById('admin-event-published').checked
     if (!title || !startVal || !endVal) return setStatus('Title, start, and end are required.')
     const date = startVal.slice(0, 10)
@@ -2051,7 +2051,7 @@
     document.getElementById('admin-event-end').value = ''
     document.getElementById('admin-event-desc').value = ''
     document.getElementById('admin-event-url').value = ''
-    document.getElementById('admin-event-location').value = 'Vester Allé 15, 8000 Aarhus C'
+    document.getElementById('admin-event-location').value = 'Vester AllÃ© 15, 8000 Aarhus C'
     document.getElementById('admin-event-published').checked = false
     document.getElementById('admin-event-image').value = ''
     setStatus('Event created!')
@@ -2091,12 +2091,12 @@
       <div style="margin-bottom:0.5rem;">
         <button class="month-toggle" onclick="toggleMonthSection('adm-${month}')">
           ${formatMonthHeading(month)}
-          <span class="month-chevron" id="adm-${month}-chev">▾</span>
+          <span class="month-chevron" id="adm-${month}-chev">â–¾</span>
         </button>
         <div id="adm-${month}" style="padding-left:0.9rem;">
           ${events.map((e, i) => `
             <a href="#admin-event/${e.id}" class="card" style="cursor:pointer;display:block;text-decoration:none;color:inherit;${i === 0 ? ' border-top:none;' : ''}" onclick="if(!event.ctrlKey&&!event.metaKey){openAdminEvent('${e.id}');return false;}">
-              <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' – ' + formatDate(e.end_date) : formatDate(e.date)}</span>
+              <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' â€“ ' + formatDate(e.end_date) : formatDate(e.date)}</span>
               ${e.published ? '' : '<span class="tag" style="color:#e67e22; margin-left:0.5rem;">Draft</span>'}
               <div class="card-title-sm">${esc(e.title)}</div>
             </a>
@@ -2120,7 +2120,7 @@
     document.getElementById('edit-event-start').value = e.date && e.start_time ? e.date + 'T' + e.start_time.slice(0, 5) : (e.date || '')
     document.getElementById('edit-event-end').value = (e.end_date || e.date) && e.end_time ? (e.end_date || e.date) + 'T' + e.end_time.slice(0, 5) : ((e.end_date || e.date) || '')
     document.getElementById('edit-event-desc').value = e.description || ''
-    document.getElementById('edit-event-location').value = e.location || 'Vester Allé 15, 8000 Aarhus C'
+    document.getElementById('edit-event-location').value = e.location || 'Vester AllÃ© 15, 8000 Aarhus C'
     document.getElementById('edit-event-url').value = e.website_url || ''
     document.getElementById('edit-event-published').checked = e.published
     document.getElementById('edit-event-image').value = ''
@@ -2154,7 +2154,7 @@
     const endVal = document.getElementById('edit-event-end').value
     const description = document.getElementById('edit-event-desc').value.trim()
     const website_url = document.getElementById('edit-event-url').value.trim() || null
-    const location = document.getElementById('edit-event-location').value.trim() || 'Vester Allé 15, 8000 Aarhus C'
+    const location = document.getElementById('edit-event-location').value.trim() || 'Vester AllÃ© 15, 8000 Aarhus C'
     const published = document.getElementById('edit-event-published').checked
     if (!title || !startVal || !endVal) return setStatus('Title, start, and end are required.')
     const date = startVal.slice(0, 10)
@@ -2202,10 +2202,10 @@
     const expanded = img.style.maxHeight === 'none'
     img.style.maxHeight = expanded ? '' : 'none'
     img.style.objectPosition = expanded ? 'top' : 'unset'
-    btn.textContent = expanded ? 'Show full ↕' : 'Collapse ↕'
+    btn.textContent = expanded ? 'Show full â†•' : 'Collapse â†•'
   }
 
-  // ── EVENT IMAGES ─────────────────────────────────────────
+  // â”€â”€ EVENT IMAGES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function compressImage(file, maxWidth = 620, quality = 1.0) {
     return new Promise((resolve, reject) => {
       const url = URL.createObjectURL(file)
@@ -2235,7 +2235,7 @@
     return db.storage.from('event-images').getPublicUrl(storagePath).data.publicUrl
   }
 
-  // ── FILES ─────────────────────────────────────────────────
+  // â”€â”€ FILES â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadFiles(eventId) {
     const { data: files } = await db.from('event_files').select('*').eq('event_id', eventId).order('uploaded_at')
     if (!files) return
@@ -2297,7 +2297,7 @@
     loadFiles(currentAdminEvent.id)
   }
 
-  // ── ADMIN: SHIFTS ─────────────────────────────────────────
+  // â”€â”€ ADMIN: SHIFTS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function applyShiftTemplate(type) {
     const templates = {
       bar: {
@@ -2383,7 +2383,7 @@
     const form = document.getElementById('new-shift-form')
     const btn = document.getElementById('toggle-new-shift-btn')
     const isHidden = form.classList.toggle('hidden')
-    btn.textContent = isHidden ? '+ Add shift' : '− Add shift'
+    btn.textContent = isHidden ? '+ Add shift' : 'âˆ’ Add shift'
   }
 
   async function addShift() {
@@ -2414,7 +2414,7 @@
     document.getElementById('admin-shifts-list').innerHTML = '<p class="muted-empty">Loading...</p>'
     const { data: shifts } = await db.from('shifts').select('*').eq('event_id', eventId)
     const shiftIds = (shifts || []).map(s => s.id)
-    // Filter signups to this event's shifts only — avoids a full-table scan
+    // Filter signups to this event's shifts only â€” avoids a full-table scan
     const [{ data: allSignups }, { data: allProfiles }] = await Promise.all([
       shiftIds.length
         ? db.from('signups').select('*, profiles(full_name, id)').in('shift_id', shiftIds)
@@ -2429,7 +2429,7 @@
       const signups = (allSignups || []).filter(sg => sg.shift_id === s.id)
       const signedUpIds = signups.map(sg => sg.user_id)
       const available = (allProfiles || []).filter(p => !signedUpIds.includes(p.id))
-      const time = s.start_time ? `${formatTime(s.start_time)} – ${formatTime(s.end_time)}` : ''
+      const time = s.start_time ? `${formatTime(s.start_time)} â€“ ${formatTime(s.end_time)}` : ''
 
       const signupRows = signups.map(sg => `
         <div class="signup-row">
@@ -2578,7 +2578,7 @@
     loadAdminShifts(currentAdminEvent.id)
   }
 
-  // ── PROFILE ───────────────────────────────────────────────
+  // â”€â”€ PROFILE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadProfile() {
     document.getElementById('profile-new-password').value = ''
     document.getElementById('profile-pw-strength-wrap').classList.add('hidden')
@@ -2625,11 +2625,11 @@
     if (!/^[\p{L}\s'\-\.]+$/u.test(full_name)) return setStatus('Name can only contain letters, spaces, hyphens, and apostrophes.')
 
     // Validate phone
-    if (phone && !/^[\d\s\+\-\(\)]{4,20}$/.test(phone)) return setStatus('Phone number looks invalid — use digits, spaces, +, - and parentheses only.')
+    if (phone && !/^[\d\s\+\-\(\)]{4,20}$/.test(phone)) return setStatus('Phone number looks invalid â€” use digits, spaces, +, - and parentheses only.')
 
     // Normalise & validate Instagram (strip leading @, validate handle chars)
     const instagramHandle = instagramRaw.replace(/^@+/, '')
-    if (instagramHandle && !/^[\w][\w.]{0,29}$/.test(instagramHandle)) return setStatus('Instagram handle can only contain letters, numbers, underscores, and dots — max 30 characters.')
+    if (instagramHandle && !/^[\w][\w.]{0,29}$/.test(instagramHandle)) return setStatus('Instagram handle can only contain letters, numbers, underscores, and dots â€” max 30 characters.')
     const instagram = instagramHandle ? '@' + instagramHandle : ''
 
     const { error } = await db.from('profiles').update({ full_name, phone, instagram, facebook, bio }).eq('id', currentUser.id)
@@ -2668,7 +2668,7 @@
     await db.auth.signOut()
   }
 
-  // ── ADMIN: SETTINGS ───────────────────────────────────────
+  // â”€â”€ ADMIN: SETTINGS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadAdminSettings() {
     const { data: approvalData } = await db.from('app_settings').select('value').eq('key', 'registration_requires_approval').single()
     const approvalCheckbox = document.getElementById('setting-require-approval')
@@ -2708,7 +2708,7 @@
             <div class="card">
               <div class="applicant-row">
                 <div style="flex:1;">
-                  <div class="applicant-name">${esc(p.full_name || '—')}</div>
+                  <div class="applicant-name">${esc(p.full_name || 'â€”')}</div>
                   ${p.email ? `<p style="color:#444; font-size:0.8rem; margin-top:0.2rem;">${esc(p.email)}</p>` : ''}
                   ${noteHtml ? `<div style="margin-top:0.6rem; padding-top:0.6rem; border-top:1px solid #f0ebe5;">${noteHtml}</div>` : ''}
                 </div>
@@ -2763,7 +2763,7 @@
     await db.from('app_settings').upsert({ key: 'registration_requires_approval', value: requiresApproval ? 'true' : 'false' }, { onConflict: 'key' })
   }
 
-  // ── ADMIN: VOLUNTEERS ─────────────────────────────────────
+  // â”€â”€ ADMIN: VOLUNTEERS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   async function loadAdminVolunteers() {
     document.getElementById('admin-volunteers-list').innerHTML = '<p class="muted-empty">Loading...</p>'
     document.getElementById('vol-overview-stats').innerHTML = ''
@@ -2913,15 +2913,15 @@
           <button class="secondary btn-sm" style="margin-bottom:0; margin-left:auto;" onclick="toggleVolunteerPanel('${p.id}')">Details</button>
         </div>
         <div id="edit-volunteer-${p.id}" class="hidden vol-detail-panel">
-          ${stats?.belowTarget ? `<p style="font-size:0.7rem; color:#b89a5a; text-transform:uppercase; letter-spacing:0.1em; font-weight:500; margin-bottom:0.65rem;">⚠ Below target</p>` : ''}
+          ${stats?.belowTarget ? `<p style="font-size:0.7rem; color:#b89a5a; text-transform:uppercase; letter-spacing:0.1em; font-weight:500; margin-bottom:0.65rem;">âš  Below target</p>` : ''}
           <div id="vol-stats-${p.id}"></div>
           ${userTags.length ? `<div style="margin:0.75rem 0 0;"><p class="vol-detail-section-label" style="margin-bottom:0.3rem;">Roles</p>${userTags.map(tagBadge).join('')}</div>` : ''}
-          <div id="vol-history-${p.id}"><p style="color:#aaa; font-size:0.85rem;">Loading shift history…</p></div>
+          <div id="vol-history-${p.id}"><p style="color:#aaa; font-size:0.85rem;">Loading shift historyâ€¦</p></div>
 
           <!-- Contact & social -->
           <div class="vol-detail-section">
             <p class="vol-detail-section-label">Contact &amp; Social</p>
-            ${p.email ? `<div class="vol-contact-row"><span class="vol-contact-icon">Email</span>${esc(p.email)} ${emailConfirmedByUser[p.id] ? '<span style="font-size:0.68rem; color:#C4991A; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-left:0.3rem;">✓ confirmed</span>' : '<span style="font-size:0.68rem; color:#c0392b; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-left:0.3rem;">unconfirmed</span>'}</div>` : ''}
+            ${p.email ? `<div class="vol-contact-row"><span class="vol-contact-icon">Email</span>${esc(p.email)} ${emailConfirmedByUser[p.id] ? '<span style="font-size:0.68rem; color:#C4991A; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-left:0.3rem;">âœ“ confirmed</span>' : '<span style="font-size:0.68rem; color:#c0392b; font-weight:500; letter-spacing:0.06em; text-transform:uppercase; margin-left:0.3rem;">unconfirmed</span>'}</div>` : ''}
             ${p.phone ? `<div class="vol-contact-row"><span class="vol-contact-icon">Phone</span>${esc(p.phone)}</div>` : ''}
             ${igHref ? `<div class="vol-contact-row"><span class="vol-contact-icon">Instagram</span><a href="${escAttr(igHref)}" target="_blank" rel="noopener">@${esc(igHandle)}</a></div>` : ''}
             ${fbHref ? `<div class="vol-contact-row"><span class="vol-contact-icon">Facebook</span><a href="${escAttr(fbHref)}" target="_blank" rel="noopener">${esc(p.facebook)}</a></div>` : ''}
@@ -3013,8 +3013,8 @@
       const renderRows = (items) => items.map(s =>
         `<div class="vol-history-row">
           <span class="history-date">${formatDate(s.date)}</span>
-          <span class="history-title">${esc(s.title || '—')}</span>
-          <span class="history-role">${esc(s.role || '—')}</span>
+          <span class="history-title">${esc(s.title || 'â€”')}</span>
+          <span class="history-role">${esc(s.role || 'â€”')}</span>
         </div>`
       ).join('')
       if (!past.length) {
@@ -3035,8 +3035,8 @@
     document.getElementById(`vol-history-rows-${id}`).innerHTML = all.map(s =>
       `<div class="vol-history-row">
         <span class="history-date">${formatDate(s.date)}</span>
-        <span class="history-title">${esc(s.title || '—')}</span>
-        <span class="history-role">${esc(s.role || '—')}</span>
+        <span class="history-title">${esc(s.title || 'â€”')}</span>
+        <span class="history-role">${esc(s.role || 'â€”')}</span>
       </div>`
     ).join('')
     btn.remove()
@@ -3146,7 +3146,7 @@
     await loadAdminVolunteers()
   }
 
-  // ── UTILS ─────────────────────────────────────────────────
+  // â”€â”€ UTILS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function formatDate(dateStr) {
     if (!dateStr) return ''
     const [y, m, d] = dateStr.split('-')
@@ -3159,7 +3159,7 @@
     if (!endDate && !endTime) return startStr
     const sameDay = startDate === endDate
     const endStr = (sameDay ? '' : formatDate(endDate) + ' ') + (endTime ? endTime.slice(0, 5) : '')
-    return endStr ? startStr + ' – ' + endStr : startStr
+    return endStr ? startStr + ' â€“ ' + endStr : startStr
   }
 
   function formatTime(ts) {
@@ -3179,7 +3179,7 @@
     }
   })
 
-  // ── AVATAR ────────────────────────────────────────────────
+  // â”€â”€ AVATAR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   function renderAvatarDisplay(containerId, avatarUrl, fullName, size) {
     const el = document.getElementById(containerId)
     if (!el) return
@@ -3227,7 +3227,7 @@
     input.value = ''
   }
 
-  // ── PROFILE POPOVER ───────────────────────────────────────
+  // â”€â”€ PROFILE POPOVER â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   let _popoverOpen = false
 
   function openProfilePopoverById(evt, el) {
@@ -3259,7 +3259,7 @@
       bioEl.style.display = bio ? 'block' : 'none'
     }
 
-    // Tags — fetch lazily
+    // Tags â€” fetch lazily
     const tagsEl = document.getElementById('pop-tags')
     tagsEl.innerHTML = ''
     db.from('volunteer_tags').select('tag').eq('user_id', userId).then(({ data }) => {
@@ -3314,7 +3314,7 @@
     }
   })
 
-  // ── HISTORY / BACK-BUTTON ─────────────────────────────────
+  // â”€â”€ HISTORY / BACK-BUTTON â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
   window.addEventListener('popstate', async (e) => {
     if (!currentUser) return
     _navigatingBack = true
@@ -3342,20 +3342,20 @@
     }
   })
 
-  // ── INIT ──────────────────────────────────────────────────
+  // â”€â”€ INIT â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 db.auth.onAuthStateChange((event, session) => {
     if (session?.user) {
       currentUser = session.user
       if ((event === 'SIGNED_IN' || event === 'INITIAL_SESSION') && !appInitialized) {
         appInitialized = true
-        // Defer DB calls — Supabase's refresh lock is still held inside this callback,
+        // Defer DB calls â€” Supabase's refresh lock is still held inside this callback,
         // so any queries made here will hang until the lock is released.
         setTimeout(async () => {
           const { data: profile } = await db.from('profiles').select('*').eq('id', currentUser.id).single()
           currentUserProfile = profile
           document.getElementById('section-auth').classList.add('hidden')
           if (!profile || profile.status !== 'approved') {
-            // Check if open registration is enabled — if so, auto-approve
+            // Check if open registration is enabled â€” if so, auto-approve
             const { data: setting } = await db.from('app_settings').select('value').eq('key', 'registration_requires_approval').single()
             if (setting?.value === 'false') {
               await db.from('profiles').update({ status: 'approved' }).eq('id', currentUser.id)
