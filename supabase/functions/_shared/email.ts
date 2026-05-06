@@ -1,6 +1,6 @@
 ﻿// Shared branded email templates for Nordisk Dans volunteer platform.
 
-const APP_URL = "https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html";
+const APP_URL = "https://nordisk.gamestormers.dk/";
 
 export function emailLayout(bodyContent: string): string {
   return `<!DOCTYPE html>
@@ -18,7 +18,7 @@ export function emailLayout(bodyContent: string): string {
           <!-- Header -->
           <tr>
             <td style="background:#C4991A;padding:30px 24px;text-align:center;">
-              <img src="https://kasperkrog92.github.io/nordisk-dans-volunteers/img/nordisk_dans_logo_transparent.png" width="70" alt="Nordisk Dans" style="display:block;margin:0 auto 10px;" />
+              <img src="https://nordisk.gamestormers.dk/img/nordisk_dans_logo_transparent.png" width="70" alt="Nordisk Dans" style="display:block;margin:0 auto 10px;" />
               <p style="margin:0;color:#fff;font-size:10px;letter-spacing:3px;text-transform:uppercase;font-weight:600;">Volunteer Platform</p>
             </td>
           </tr>

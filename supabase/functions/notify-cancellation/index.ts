@@ -51,8 +51,8 @@ Deno.serve(async (req) => {
       ? new Date(shift.start_time).toLocaleString("da-DK", { timeZone: "Europe/Copenhagen" })
       : "—";
     const adminEventUrl = eventId
-      ? `https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html#admin-event/${eventId}`
-      : `https://kasperkrog92.github.io/nordisk-dans-volunteers/nordisk-dans-volunteers.html`;
+      ? `https://nordisk.gamestormers.dk/#admin-event/${eventId}`
+      : `https://nordisk.gamestormers.dk/`;
 
     const html = emailLayout(
       heading("Shift cancellation") +
