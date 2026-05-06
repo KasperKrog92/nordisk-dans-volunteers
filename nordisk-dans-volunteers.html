@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Nordisk Dans Volunteers</title>
-  <link rel="icon" type="image/png" href="nordisk-dans-favicon.png" />
+  <link rel="icon" type="image/png" href="img/nordisk_dans_logo.png" />
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.38.0"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
@@ -521,7 +521,7 @@
     .form-row > div { flex: 1; }
     /* ── ID-specific styles (moved from inline) ───────────── */
     #logo-header { padding: 2rem 1rem 1rem; text-align: center; cursor: pointer; }
-    #logo-header img { height: 3rem; display: block; margin: 0 auto; }
+    #logo-header img { height: 5rem; display: block; margin: 0 auto; }
     #logo-header p { font-size: 0.7rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: #aaa; margin-top: 0.5rem; }
     #auth-step-indicator { font-size: 0.72rem; color: #aaa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.8rem; font-weight: 500; }
     #auth-intro { color: #888; font-style: italic; font-size: 0.88rem; margin-bottom: 1.2rem; line-height: 1.5; }
@@ -772,7 +772,7 @@
 </div>
 <div id="app">
   <div id="logo-header" onclick="if (!document.getElementById('section-app').classList.contains('hidden')) showView('events')">
-    <img src="nordisk-dans-logo.png" alt="Nordisk Dans" />
+    <img src="img/nordisk_dans_logo.png" alt="Nordisk Dans" />
     <p>Volunteer Platform</p>
   </div>
   <div id="status"></div>
@@ -1372,7 +1372,7 @@
   let chatInterval = null
   let _navigatingBack = false
   let _historyInitialized = false
-  const defaultThumbnailUrl = 'nordisk-dans-thumb.png'
+  const defaultThumbnailUrl = 'img/nordisk_dans_logo.png'
   let isSignUp = false
   let registrationRequiresApproval = true  // default safe until fetched
 
@@ -1797,7 +1797,7 @@
            <img id="detail-event-img" class="event-img-header" src="${escAttr(e.image_url)}" alt="" />
            <button onclick="toggleFullImage()" id="btn-full-img" style="position:absolute; bottom:0.5rem; right:0.6rem; width:auto; padding:0; font-size:0.7rem; letter-spacing:0.06em; background:none; border:none; color:rgba(255,255,255,0.6); margin-bottom:0; text-shadow:0 1px 3px rgba(0,0,0,0.5);">Show full ↕</button>
          </div>`
-      : `<img class="event-img-header event-img-header--default" src="nordisk-dans-event-default.png" alt="Nordisk Dans" />`
+      : `<img class="event-img-header event-img-header--default" src="img/nordisk_dans_logo_transparent.png" alt="Nordisk Dans" />`
     document.getElementById('btn-edit-event').classList.toggle('hidden', !currentUserProfile?.is_admin)
     const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Copenhagen' })
     const calBtnEl = document.getElementById('btn-add-to-calendar')
