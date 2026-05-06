@@ -1709,9 +1709,20 @@
     imgWrap.innerHTML = e.image_url
       ? `<div style="position:relative;">
            <img id="detail-event-img" class="event-img-header" src="${escAttr(e.image_url)}" alt="" />
-           <button onclick="toggleFullImage()" id="btn-full-img" style="position:absolute; bottom:0.5rem; right:0.6rem; width:auto; padding:0; font-size:0.7rem; letter-spacing:0.06em; background:none; border:none; color:rgba(255,255,255,0.6); margin-bottom:0; text-shadow:0 1px 3px rgba(0,0,0,0.5);">Show full ↕</button>
+           <button onclick="toggleFullImage()" id="btn-full-img" style="display:none;position:absolute; bottom:0.5rem; right:0.6rem; width:auto; padding:0; font-size:0.7rem; letter-spacing:0.06em; background:none; border:none; color:rgba(255,255,255,0.6); margin-bottom:0; text-shadow:0 1px 3px rgba(0,0,0,0.5);">Show full ↕</button>
          </div>`
       : `<img class="event-img-header event-img-header--default" src="img/nordisk_dans_logo_transparent.png" alt="Nordisk Dans" />`
+    if (e.image_url) {
+      const detailImg = document.getElementById('detail-event-img')
+      const checkImgOverflow = () => {
+        if (detailImg.naturalWidth && detailImg.clientWidth) {
+          const renderedHeight = (detailImg.naturalHeight / detailImg.naturalWidth) * detailImg.clientWidth
+          if (renderedHeight > 280) document.getElementById('btn-full-img').style.display = ''
+        }
+      }
+      if (detailImg.complete) checkImgOverflow()
+      else detailImg.addEventListener('load', checkImgOverflow)
+    }
     document.getElementById('btn-edit-event').classList.toggle('hidden', !currentUserProfile?.is_admin)
     const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Copenhagen' })
     document.title = e.title
