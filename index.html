@@ -2654,6 +2654,7 @@
       return setStatus(`Error deleting account: ${err}`)
     }
     await db.auth.signOut()
+    location.reload()
   }
 
   // ── ADMIN: SETTINGS ───────────────────────────────────────
