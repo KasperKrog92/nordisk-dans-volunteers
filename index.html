@@ -126,7 +126,7 @@
     }
     .tag.admin { color: #d4a017; }
     .tag.date-tag { color: #999; font-size: 0.72rem; letter-spacing: 0.06em; }
-    .cal-dropdown-wrap { position: relative; display: inline-block; margin-top: 0.5rem; }
+    .cal-dropdown-wrap { position: relative; display: inline-block; }
     .cal-toggle-btn {
       display: inline-block; width: auto; padding: 0; margin: 0;
       border: none; background: none; color: #C4991A;
@@ -1916,8 +1916,10 @@
     el.style.display = el.style.display === 'none' ? 'block' : 'none'
   }
 
-  document.addEventListener('click', function() {
-    document.querySelectorAll('.cal-dropdown').forEach(el => el.style.display = 'none')
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.cal-dropdown-wrap')) {
+      document.querySelectorAll('.cal-dropdown').forEach(el => el.style.display = 'none')
+    }
   })
 
   function downloadShiftIcs(date, startTime, endTime, eventTitle, roleName, location, description) {
@@ -1996,17 +1998,19 @@
                 <div style="display:flex; gap:0.8rem; align-items:flex-start;">
                   ${(event.image_url || defaultThumbnailUrl) ? `<img class="event-img-thumb${event.image_url ? ' event-img-thumb--cover' : ''}" src="${escAttr(event.image_url || defaultThumbnailUrl)}" alt="" loading="lazy" />` : ''}
                   <div style="flex:1; min-width:0;">
-                    <span class="tag date-tag">${formatDate(event.date)}</span>
-                    <div class="card-title">${esc(event.title)}</div>
-                    <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
-                    <div class="cal-dropdown-wrap" onclick="event.stopPropagation()">
-                      <button class="cal-toggle-btn" onclick="toggleCalendarDropdown('cal-drop-${s.id}',event)">+ Add to calendar ▾</button>
-                      <div id="cal-drop-${s.id}" class="cal-dropdown">
-                        <a href="${googleUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Google Calendar</a>
-                        <hr class="cal-dropdown-divider">
-                        <button onclick="event.stopPropagation();${icsCall}">Download .ics</button>
+                    <div style="display:flex; justify-content:space-between; align-items:center;">
+                      <span class="tag date-tag" style="margin-bottom:0;">${formatDate(event.date)}</span>
+                      <div class="cal-dropdown-wrap" onclick="event.stopPropagation()">
+                        <button class="cal-toggle-btn" onclick="toggleCalendarDropdown('cal-drop-${s.id}',event)">+ Add to calendar ▾</button>
+                        <div id="cal-drop-${s.id}" class="cal-dropdown" style="right:0;left:auto;">
+                          <a href="${googleUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Google Calendar</a>
+                          <hr class="cal-dropdown-divider">
+                          <button onclick="event.stopPropagation();${icsCall}">Download .ics</button>
+                        </div>
                       </div>
                     </div>
+                    <div class="card-title">${esc(event.title)}</div>
+                    <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
                   </div>
                 </div>
               </a>
