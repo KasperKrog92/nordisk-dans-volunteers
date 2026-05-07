@@ -1539,7 +1539,7 @@
       } else if (name === 'admin-event' && extraState.eventId) {
         hash = '#admin-event/' + extraState.eventId
       } else if (name === 'events') {
-        hash = ''
+        hash = location.pathname
       } else {
         hash = '#' + name
       }
