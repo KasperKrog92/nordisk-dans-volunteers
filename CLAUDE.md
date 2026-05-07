@@ -78,6 +78,6 @@ The Supabase CLI binary is at `C:\Users\kaspe\bin\supabase.exe` — it is not on
 - Toast notifications via `showToast(message, type)` (`type`: `'success'` | `'error'` | `'info'`)
 - Profile popovers are rendered dynamically and positioned relative to the clicked avatar
 - Event images are client-side compressed before upload (canvas-based, target ≤ 500 KB)
-- Calendar export generates `.ics` files in-browser via a Blob URL
+- Calendar export generates `.ics` files in-browser via a Blob URL — the `downloadShiftIcs()` function handles this on the My Shifts page, with an "Add to calendar" button on each shift card
 - Password strength is validated client-side with a visual meter before submission
 - Primary accent colour: `#C4991A` (gold), hover: `#9a7500`

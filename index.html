@@ -1857,6 +1857,45 @@
     loadMyShifts()
   }
 
+  function downloadShiftIcs(date, startTime, endTime, eventTitle, roleName, location, description) {
+    const d = date.replace(/-/g, '')
+    let dtstart, dtend
+    if (startTime) {
+      const s = startTime.replace(/:/g, '').slice(0, 6)
+      const e = endTime ? endTime.replace(/:/g, '').slice(0, 6) : s
+      dtstart = `DTSTART:${d}T${s}`
+      dtend = `DTEND:${d}T${e}`
+    } else {
+      dtstart = `DTSTART;VALUE=DATE:${d}`
+      dtend = `DTEND;VALUE=DATE:${d}`
+    }
+    const uid = `${Date.now()}-${Math.random().toString(36).slice(2)}@nordisk-dans`
+    const now = new Date().toISOString().replace(/[-:.]/g, '').slice(0, 15) + 'Z'
+    const summary = roleName ? `${roleName} – ${eventTitle}` : eventTitle
+    const lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Nordisk Dans//Volunteer Platform//EN',
+      'BEGIN:VEVENT',
+      `UID:${uid}`,
+      `DTSTAMP:${now}`,
+      dtstart,
+      dtend,
+      `SUMMARY:${summary}`,
+      location ? `LOCATION:${location}` : null,
+      description ? `DESCRIPTION:${description.replace(/\n/g, '\\n')}` : null,
+      'END:VEVENT',
+      'END:VCALENDAR'
+    ].filter(Boolean).join('\r\n')
+    const blob = new Blob([lines], { type: 'text/calendar' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `${eventTitle.replace(/[^a-z0-9]/gi, '_')}_shift.ics`
+    a.click()
+    URL.revokeObjectURL(url)
+  }
+
   async function loadMyShifts() {
     document.getElementById('my-shifts-list').innerHTML = '<p class="muted-empty">Loading...</p>'
     const { data } = await db
@@ -1895,6 +1934,7 @@
                     <span class="tag date-tag">${formatDate(event.date)}</span>
                     <div class="card-title">${esc(event.title)}</div>
                     <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
+                    <button onclick="event.preventDefault();event.stopPropagation();downloadShiftIcs('${escAttr(event.date)}','${escAttr(shift.start_time||'')}','${escAttr(shift.end_time||'')}','${escAttr(event.title)}','${escAttr(shift.role_name)}','${escAttr(event.location||'')}','${escAttr((shift.description||'').replace(/'/g,'\\'+'\''))}')" style="margin-top:0.5rem;background:none;border:none;padding:0;color:#C4991A;font-size:0.8rem;font-weight:600;cursor:pointer;letter-spacing:0.03em;">+ Add to calendar</button>
                   </div>
                 </div>
               </a>
