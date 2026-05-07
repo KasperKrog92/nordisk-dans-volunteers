@@ -2659,6 +2659,7 @@
     appInitialized = false
     _historyInitialized = false
     setStatus('')
+    history.replaceState(null, '', location.pathname)
     document.getElementById('section-auth').classList.remove('hidden')
     document.getElementById('section-pending').classList.add('hidden')
     document.getElementById('section-app').classList.add('hidden')
@@ -3340,6 +3341,7 @@ db.auth.onAuthStateChange((event, session) => {
             appInitialized = false
             _historyInitialized = false
             setStatus('')
+            history.replaceState(null, '', location.pathname)
             document.getElementById('section-auth').classList.remove('hidden')
             document.getElementById('section-pending').classList.add('hidden')
             document.getElementById('section-app').classList.add('hidden')
