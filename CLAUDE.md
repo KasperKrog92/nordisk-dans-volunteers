@@ -8,7 +8,7 @@ Nordisk Dans Volunteer Platform is a volunteer management system for the Nordisk
 
 ## Architecture
 
-**Single-file SPA** — The entire application lives in `nordisk-dans-volunteers.html`: all HTML, CSS, and JavaScript are embedded in one file. There is no build step, no npm, no bundler. Hosted at `kasperkrog92.github.io/nordisk-dans-volunteers/` (GitHub Pages, redirects via `index.html`).
+**Single-file SPA** — The entire application lives in `index.html`: all HTML, CSS, and JavaScript are embedded in one file. There is no build step, no npm, no bundler. Hosted at `nordisk.gamestormers.dk` (GitHub Pages, custom domain via `CNAME`).
 
 **Tech stack:**
 - Vanilla JavaScript (no framework)
@@ -33,7 +33,7 @@ Nordisk Dans Volunteer Platform is a volunteer management system for the Nordisk
 
 ## Database (Supabase PostgreSQL)
 
-Supabase project: `nmhmuaggsnsgswvfjaxh` (shared with Turkis during transition — see to-do in README).
+Supabase project: `nmhmuaggsnsgswvfjaxh`.
 
 Tables: `profiles`, `volunteer_tags`, `app_settings`, `events`, `shifts`, `signups`, `event_files`, `messages`, `chat_notification_log`.
 
@@ -45,7 +45,7 @@ Tables: `profiles`, `volunteer_tags`, `app_settings`, `events`, `shifts`, `signu
 
 Volunteer status values on `profiles.status`: `pending`, `approved`, `rejected`.
 
-Available interest tags (stored in `volunteer_tags`): `bar_wardrobe_entrance`, `backstage_manager`, `light_operator`, `bar_manager`. Only the first three are self-assignable; `bar_manager` is admin-assigned. **These were inherited from Turkis and likely need updating for Nordisk Dans — see README to-do.**
+Available interest tags (stored in `volunteer_tags`): `bar_wardrobe_entrance`, `backstage_manager`, `light_operator`, `bar_manager`. Only the first three are self-assignable; `bar_manager` is admin-assigned.
 
 ## Edge Functions
 
@@ -67,7 +67,7 @@ The Supabase CLI binary is at `C:\Users\kaspe\bin\supabase.exe` — it is not on
 - `notify-cancellation` — emails when a volunteer cancels a shift
 - `notify-new-application` — emails admins when a new volunteer applies
 
-**Note:** Edge function email content (FROM_EMAIL, APP_URL, sender names, venue address) still references Turkis — see README to-do.
+**Email:** All transactional emails are sent via Resend from `kasper@gamestormers.dk` (domain `gamestormers.dk`). Shared email layout and helpers are in `supabase/functions/_shared/email.ts`. Supabase auth email templates (confirmation, password reset, etc.) are configured directly in the Supabase project via the Management API.
 
 ## RLS Notes
 

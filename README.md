@@ -4,14 +4,14 @@ A volunteer management system built for Nordisk Dans. Currently scoped for **Nor
 
 ## Stack
 
-- Vanilla JavaScript SPA (single `nordisk-dans-volunteers.html` file — no build step)
+- Vanilla JavaScript SPA (single `index.html` file — no build step)
 - [Supabase](https://supabase.com) for database, auth, storage, and edge functions
-- Hosted at `kasperkrog92.github.io/nordisk-dans-volunteers/` via GitHub Pages
+- Hosted at `nordisk.gamestormers.dk` via GitHub Pages (custom domain)
 - Emails sent via [Resend](https://resend.com) from `kasper@gamestormers.dk`
 
 ## Development
 
-Open `nordisk-dans-volunteers.html` directly in a browser or serve it with any static file server:
+Open `index.html` directly in a browser or serve it with any static file server:
 
 ```bash
 npx serve .
@@ -19,7 +19,7 @@ npx serve .
 python -m http.server 8080
 ```
 
-All changes are made in `nordisk-dans-volunteers.html`. Deploy by pushing to `main` — GitHub Pages serves automatically.
+All changes are made in `index.html`. Deploy by pushing to `main` — GitHub Pages serves automatically.
 
 ## Supabase
 
@@ -44,8 +44,8 @@ Edge functions are in `supabase/functions/`. Deploy with:
 ### Before go-live
 
 - [ ] Clear existing Turkis volunteer data from the database (profiles, signups, events, shifts, messages)
-- [ ] Update the volunteer onboarding notice in `nordisk-dans-volunteers.html` (search for `notice-warm`) with Northside 2026-specific wording
+- [ ] Update the volunteer onboarding notice in `index.html` (search for `notice-warm`) with Northside 2026-specific wording
 
 ### Nice to have
 
-- [ ] Add a proper default event banner image to `img/` and update the `nordisk-dans-event-default.png` reference in `nordisk-dans-volunteers.html` — currently falls back to the transparent logo
+- [ ] Add a proper default event banner image to `img/` — currently falls back to the transparent logo
