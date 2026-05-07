@@ -1881,12 +1881,17 @@
     loadMyShifts()
   }
 
+  function tsToUtcHHMMSS(ts) {
+    const d = new Date(ts)
+    return String(d.getUTCHours()).padStart(2, '0') + String(d.getUTCMinutes()).padStart(2, '0') + '00'
+  }
+
   function buildGoogleCalUrl(date, startTime, endTime, title, roleName, location, description) {
     const d = date.replace(/-/g, '')
     let dates
     if (startTime) {
-      const s = startTime.replace(/:/g, '').slice(0, 6)
-      const e = endTime ? endTime.replace(/:/g, '').slice(0, 6) : s
+      const s = tsToUtcHHMMSS(startTime)
+      const e = endTime ? tsToUtcHHMMSS(endTime) : s
       dates = `${d}T${s}/${d}T${e}`
     } else {
       const nextDay = new Date(date)
@@ -1895,7 +1900,7 @@
       dates = `${d}/${ed}`
     }
     const text = encodeURIComponent(roleName ? `${roleName} – ${title}` : title)
-    let url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}`
+    let url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}&ctz=Europe%2FCopenhagen`
     if (location) url += `&location=${encodeURIComponent(location)}`
     if (description) url += `&details=${encodeURIComponent(description)}`
     return url
@@ -1919,10 +1924,10 @@
     const d = date.replace(/-/g, '')
     let dtstart, dtend
     if (startTime) {
-      const s = startTime.replace(/:/g, '').slice(0, 6)
-      const e = endTime ? endTime.replace(/:/g, '').slice(0, 6) : s
-      dtstart = `DTSTART:${d}T${s}`
-      dtend = `DTEND:${d}T${e}`
+      const s = tsToUtcHHMMSS(startTime)
+      const e = endTime ? tsToUtcHHMMSS(endTime) : s
+      dtstart = `DTSTART;TZID=Europe/Copenhagen:${d}T${s}`
+      dtend = `DTEND;TZID=Europe/Copenhagen:${d}T${e}`
     } else {
       dtstart = `DTSTART;VALUE=DATE:${d}`
       dtend = `DTEND;VALUE=DATE:${d}`
