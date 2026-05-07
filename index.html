@@ -1634,11 +1634,17 @@
 
   async function loadEvents() {
     document.getElementById('events-list').innerHTML = '<p class="muted-empty">Loading...</p>'
-    const { data, error } = await db.from('events').select('*').eq('published', true).order('date')
-    if (error) return setStatus(error.message)
+    const [eventsResult, signupsResult] = await Promise.all([
+      db.from('events').select('*').eq('published', true).order('date'),
+      currentUser
+        ? db.from('signups').select('shifts(event_id)').eq('user_id', currentUser.id)
+        : Promise.resolve({ data: [] })
+    ])
+    if (eventsResult.error) return setStatus(eventsResult.error.message)
+    const signedUpEventIds = new Set((signupsResult.data || []).map(s => s.shifts?.event_id).filter(Boolean))
     const list = document.getElementById('events-list')
     const today = new Date().toLocaleDateString('sv-SE', { timeZone: 'Europe/Copenhagen' })
-    const all = data || []
+    const all = eventsResult.data || []
     const filtered = currentEventsTab === 'upcoming'
       ? all.filter(e => e.date >= today)
       : all.filter(e => e.date < today).reverse()
@@ -1664,7 +1670,10 @@
               <div style="display:flex; gap:0.8rem; align-items:flex-start;">
                 ${(e.image_url || defaultThumbnailUrl) ? `<img class="event-img-thumb${e.image_url ? ' event-img-thumb--cover' : ''}" src="${escAttr(e.image_url || defaultThumbnailUrl)}" alt="" loading="lazy" />` : ''}
                 <div style="flex:1; min-width:0;">
-                  <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' – ' + formatDate(e.end_date) : formatDate(e.date)}</span>
+                  <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
+                    <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' – ' + formatDate(e.end_date) : formatDate(e.date)}</span>
+                    ${signedUpEventIds.has(e.id) ? '<span class="tag" style="color:#C4991A; margin-bottom:0.4rem;">&#10003; Signed up</span>' : ''}
+                  </div>
                   <div class="card-title">${esc(e.title)}</div>
                   ${e.description ? `<p style="color:#555; font-size:0.85rem; margin-top:0.3rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:600px;">${esc(e.description.replace(/\n[\s\S]*/,'').slice(0,120))}</p>` : ''}
                 </div>
