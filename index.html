@@ -2003,7 +2003,7 @@
                       <div class="cal-dropdown-wrap" onclick="event.stopPropagation()">
                         <button class="cal-toggle-btn" onclick="toggleCalendarDropdown('cal-drop-${s.id}',event)">+ Add to calendar ▾</button>
                         <div id="cal-drop-${s.id}" class="cal-dropdown" style="right:0;left:auto;">
-                          <a href="${googleUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()">Google Calendar</a>
+                          <button onclick="event.stopPropagation();window.open('${googleUrl}','_blank','noopener,noreferrer')">Google Calendar</button>
                           <hr class="cal-dropdown-divider">
                           <button onclick="event.stopPropagation();${icsCall}">Download .ics</button>
                         </div>
