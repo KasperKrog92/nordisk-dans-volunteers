@@ -1857,6 +1857,40 @@
     loadMyShifts()
   }
 
+  function buildGoogleCalUrl(date, startTime, endTime, title, roleName, location, description) {
+    const d = date.replace(/-/g, '')
+    let dates
+    if (startTime) {
+      const s = startTime.replace(/:/g, '').slice(0, 6)
+      const e = endTime ? endTime.replace(/:/g, '').slice(0, 6) : s
+      dates = `${d}T${s}/${d}T${e}`
+    } else {
+      const nextDay = new Date(date)
+      nextDay.setDate(nextDay.getDate() + 1)
+      const ed = nextDay.toISOString().slice(0, 10).replace(/-/g, '')
+      dates = `${d}/${ed}`
+    }
+    const text = encodeURIComponent(roleName ? `${roleName} – ${title}` : title)
+    let url = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${text}&dates=${dates}`
+    if (location) url += `&location=${encodeURIComponent(location)}`
+    if (description) url += `&details=${encodeURIComponent(description)}`
+    return url
+  }
+
+  function toggleCalendarDropdown(id, e) {
+    e.preventDefault()
+    e.stopPropagation()
+    document.querySelectorAll('.cal-dropdown').forEach(el => {
+      if (el.id !== id) el.style.display = 'none'
+    })
+    const el = document.getElementById(id)
+    el.style.display = el.style.display === 'none' ? 'block' : 'none'
+  }
+
+  document.addEventListener('click', function() {
+    document.querySelectorAll('.cal-dropdown').forEach(el => el.style.display = 'none')
+  })
+
   function downloadShiftIcs(date, startTime, endTime, eventTitle, roleName, location, description) {
     const d = date.replace(/-/g, '')
     let dtstart, dtend
@@ -1926,6 +1960,8 @@
             const shift = s.shifts
             const event = shift.events
             const time = shift.start_time ? `${formatTime(shift.start_time)} – ${formatTime(shift.end_time)}` : ''
+            const googleUrl = escAttr(buildGoogleCalUrl(event.date, shift.start_time, shift.end_time, event.title, shift.role_name, event.location, shift.description))
+            const icsCall = `downloadShiftIcs('${escAttr(event.date)}','${escAttr(shift.start_time||'')}','${escAttr(shift.end_time||'')}','${escAttr(event.title)}','${escAttr(shift.role_name||'')}','${escAttr(event.location||'')}','${escAttr((shift.description||'').replace(/'/g,''))}')`
             return `
               <a href="#event/${event.id}" class="card" style="cursor:pointer;display:block;text-decoration:none;color:inherit;" onclick="if(!event.ctrlKey&&!event.metaKey){openEvent('${event.id}');return false;}">
                 <div style="display:flex; gap:0.8rem; align-items:flex-start;">
@@ -1934,7 +1970,14 @@
                     <span class="tag date-tag">${formatDate(event.date)}</span>
                     <div class="card-title">${esc(event.title)}</div>
                     <p style="color:#555; font-size:0.85rem; margin-top:0.3rem;">${esc(shift.role_name)}${time ? ` · ${time}` : ''}</p>
-                    <button onclick="event.preventDefault();event.stopPropagation();downloadShiftIcs('${escAttr(event.date)}','${escAttr(shift.start_time||'')}','${escAttr(shift.end_time||'')}','${escAttr(event.title)}','${escAttr(shift.role_name)}','${escAttr(event.location||'')}','${escAttr((shift.description||'').replace(/'/g,'\\'+'\''))}')" style="margin-top:0.5rem;background:none;border:none;padding:0;color:#C4991A;font-size:0.8rem;font-weight:600;cursor:pointer;letter-spacing:0.03em;">+ Add to calendar</button>
+                    <div class="cal-dropdown-wrap" style="position:relative;display:inline-block;margin-top:0.5rem;" onclick="event.stopPropagation()">
+                      <button onclick="toggleCalendarDropdown('cal-drop-${s.id}',event)" style="background:none;border:none;padding:0;color:#C4991A;font-size:0.8rem;font-weight:600;cursor:pointer;letter-spacing:0.03em;">+ Add to calendar ▾</button>
+                      <div id="cal-drop-${s.id}" class="cal-dropdown" style="display:none;position:absolute;top:calc(100% + 4px);left:0;background:#fff;border:1.5px solid #e8e8e8;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,0.1);z-index:100;min-width:170px;overflow:hidden;">
+                        <a href="${googleUrl}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="display:block;padding:0.55rem 1rem;font-size:0.82rem;color:#333;text-decoration:none;white-space:nowrap;">Google Calendar</a>
+                        <div style="border-top:1px solid #f0f0f0;"></div>
+                        <button onclick="event.stopPropagation();${icsCall}" style="display:block;width:100%;text-align:left;padding:0.55rem 1rem;font-size:0.82rem;color:#333;background:none;border:none;cursor:pointer;white-space:nowrap;font-family:inherit;">Download .ics</button>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </a>
