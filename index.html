@@ -1672,7 +1672,7 @@
                 <div style="flex:1; min-width:0;">
                   <div style="display:flex; align-items:center; gap:0.5rem; flex-wrap:wrap;">
                     <span class="tag date-tag">${e.end_date && e.end_date !== e.date ? formatDate(e.date) + ' – ' + formatDate(e.end_date) : formatDate(e.date)}</span>
-                    ${signedUpEventIds.has(e.id) ? '<span class="tag" style="color:#C4991A; margin-bottom:0.4rem;">&#10003; Signed up</span>' : ''}
+                    ${signedUpEventIds.has(e.id) ? '<span class="tag" style="color:#C4991A; margin-bottom:0.4rem; font-weight:700;">&#10003; Signed up</span>' : ''}
                   </div>
                   <div class="card-title">${esc(e.title)}</div>
                   ${e.description ? `<p style="color:#555; font-size:0.85rem; margin-top:0.3rem; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; max-width:600px;">${esc(e.description.replace(/\n[\s\S]*/,'').slice(0,120))}</p>` : ''}
