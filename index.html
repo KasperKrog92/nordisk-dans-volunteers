@@ -3322,12 +3322,18 @@ db.auth.onAuthStateChange((event, session) => {
           const { data: profile } = await db.from('profiles').select('*').eq('id', currentUser.id).single()
           currentUserProfile = profile
           document.getElementById('section-auth').classList.add('hidden')
-          if (!profile || profile.status !== 'approved') {
+          if (!profile) {
+            // No profile row means the account was deleted — clear the stale session
+            await db.auth.signOut()
+            location.reload()
+            return
+          }
+          if (profile.status !== 'approved') {
             // Check if open registration is enabled — if so, auto-approve
             const { data: setting } = await db.from('app_settings').select('value').eq('key', 'registration_requires_approval').single()
             if (setting?.value === 'false') {
               await db.from('profiles').update({ status: 'approved' }).eq('id', currentUser.id)
-              if (profile) profile.status = 'approved'
+              profile.status = 'approved'
             } else {
               document.getElementById('section-pending').classList.remove('hidden')
               document.getElementById('section-app').classList.add('hidden')
