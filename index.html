@@ -2654,8 +2654,15 @@
       return setStatus(`Error deleting account: ${err}`)
     }
     await db.auth.signOut()
+    currentUser = null
+    currentUserProfile = null
+    appInitialized = false
+    _historyInitialized = false
+    setStatus('')
     document.getElementById('section-auth').classList.remove('hidden')
+    document.getElementById('section-pending').classList.add('hidden')
     document.getElementById('section-app').classList.add('hidden')
+    document.getElementById('nav-admin').classList.add('hidden')
   }
 
   // ── ADMIN: SETTINGS ───────────────────────────────────────
@@ -3326,10 +3333,17 @@ db.auth.onAuthStateChange((event, session) => {
           if (!profile) {
             // No profile row means the account was deleted — clear the stale session.
             // Don't reload: if signOut doesn't fire SIGNED_OUT (deleted auth user),
-            // the manual update below prevents an infinite reload loop.
+            // the manual reset below prevents an infinite reload loop.
             await db.auth.signOut()
+            currentUser = null
+            currentUserProfile = null
+            appInitialized = false
+            _historyInitialized = false
+            setStatus('')
             document.getElementById('section-auth').classList.remove('hidden')
+            document.getElementById('section-pending').classList.add('hidden')
             document.getElementById('section-app').classList.add('hidden')
+            document.getElementById('nav-admin').classList.add('hidden')
             return
           }
           if (profile.status !== 'approved') {
